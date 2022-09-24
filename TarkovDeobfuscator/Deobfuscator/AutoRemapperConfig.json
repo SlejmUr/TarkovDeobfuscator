@@ -319,7 +319,18 @@
       "HasMethods": [ "ForceRecalcShootPos", "ShortName" ]
     },
     //"GClass211": "ExUsecBrainClass",
+    {
+      "RenameClassNameTo": "ExUsecBrainClass",
+      "IsClass": true,
+      "HasFields": [ "stationaryWeaponLink_0", "gclass351_0", "hashSet_1" ]
+    },
     //"GClass224": "FollowerBigPiperainClass",
+    {
+      "RenameClassNameTo": "FollowerBigPiperainClass",
+      "IsClass": true,
+      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4" ],
+      "HasMethods": [ "ShortName" ]
+    },
     //"GClass2119": "MagazineClass",
     {
       "RenameClassNameTo": "MagazineClass",
@@ -328,19 +339,86 @@
       "HasMethods": [ "GetMaxVisibleAmmo", "CheckCompatibility", "GetAmmoCountByLevel" ]
     },
     //"GClass214": "FollowerBullyBrainClass",
+    {
+      "RenameClassNameTo": "FollowerBullyBrainClass",
+      "IsClass": true,
+      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9" ],
+      "HasMethods": [ "ShortName" ]
+    },
     //"GClass2152": "EquipmentClass",
+    {
+      "RenameClassNameTo": "EquipmentClass",
+      "IsClass": true,
+      "HasFields": [ "AllSlotNames" ]
+    },
     //"GClass2183": "BulletClass",
+    {
+      "RenameClassNameTo": "BulletClass",
+      "IsClass": true,
+      "HasFields": [ "buckshotDispersion" ]
+    },
     //"GClass2191": "InventoryClass",
+    {
+      "RenameClassNameTo": "InventoryClass",
+      "IsClass": true,
+      "HasMethods": [ "CreateInventoryHashSum" ]
+    },
     //"GClass2204": "TraderControllerClass",
+    {
+      "RenameClassNameTo": "TraderControllerClass",
+      "IsClass": true,
+      "HasEvents": [ "OnItemFound" ]
+    },
     //"GClass2207": "InventoryControllerClass",
+    {
+      "RenameClassNameTo": "InventoryControllerClass",
+      "IsClass": true,
+      "HasEvents": [ "CriticalInventoryErrorHappened" ]
+    },
     //"GClass225": "RaiderBrainClass",
+    {
+      "RenameClassNameTo": "RaiderBrainClass",
+      "IsClass": true,
+      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9", "int_10" ],
+      "HasMethods": [ "ShortName", "method_5" ]
+    },
     //"GClass228": "BossKojaniyBrainClass",
+    {
+      "RenameClassNameTo": "RaiderBrainClass",
+      "IsClass": true,
+      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "gclass61_0", "gclass63_0", "gclass70_0" ],
+      "HasMethods": [ "ShortName", "SetCorePosition" ]
+    },
     //"GClass242": "ShootPointClass",
+    {
+      "RenameClassNameTo": "ShootPointClass",
+      "HasFields": [ "DistCoef", "Point" ]
+    },
     //"GClass25": "AICoreControllerClass",
+    {
+      "RenameClassNameTo": "AICoreControllerClass",
+      "HasMethods": [ "ListAgents" ]
+    },
     //"GClass2547": "InsuranceCompanyClass",
+    {
+      "RenameClassNameTo": "AICoreControllerClass",
+      "HasMethods": [ "ClearInsuredItems" ]
+    },
     //"GClass2548": "ItemClass",
+    {
+      "RenameClassNameTo": "ItemClass",
+      "HasFields": [ "ChildrenToInsure" ]
+    },
     //"GClass2552": "RagfairSettingsClass",
+    {
+      "RenameClassNameTo": "RagfairSettingsClass",
+      "HasFields": [ "DefaultDuration" ]
+    },
     //"GClass2554": "RagFairClass",
+    {
+      "RenameClassNameTo": "RagFairClass",
+      "HasFields": [ "IconsLoader" ]
+    },
     //"GClass2650": "JobPriority",
     {
       "RenameClassNameTo": "JobPriority",
@@ -348,18 +426,74 @@
       "HasMethods": [ "Priority", "GetYieldDelegate" ]
     },
     //"GClass267": "ZoneDangerAreasClass",
-    //"GClass2672`1": "BindableState",
+    {
+      "RenameClassNameTo": "ZoneDangerAreasClass",
+      "HasEvents": [ "OnDangerAreaCreated" ]
+    },
+    //"GClass2671": "BindableClass",
+    {
+      "RenameClassNameTo": "BindableClass",
+      "HasFields": [ "HasHandlers" ]
+    },
+    //"GClass2672`1": "BindableState", - Cannot be renamed to it, making far more type than this :(
     //"GClass2686": "BundleLock",
+    {
+      "RenameClassNameTo": "BundleLock",
+      "HasFields": [ "MaxConcurrentOperations" ]
+    },
     //"GClass2687`1": "DependencyGraph",
+    {
+      "RenameClassNameTo": "DependencyGraph",
+      "HasFields": [ "Nodes" ],
+      "HasMethods": [ "Retain", "Update", "RetainSeparate", "GetNode" ]
+    },
     //"GClass295": "BotFollowerClass",
+    {
+      "RenameClassNameTo": "BotFollowerClass",
+      "HasEvents": [ "OnBossFinded" ]
+    },
     //"GClass312": "EnemiesControllerClass",
+    {
+      "RenameClassNameTo": "EnemiesControllerClass",
+      "HasFields": [ "EnemyInfos" ]
+    },
     //"GClass326": "BotLayClass",
+    {
+      "RenameClassNameTo": "BotLayClass",
+      "HasFields": [ "IsLay" ],
+      "HasEvents": [ "OnLay" ]
+    },
     //"GClass350": "BotBrainClass",
+    {
+      "RenameClassNameTo": "BotBrainClass",
+      "HasEvents": [ "OnSetStrategy" ]
+    },
     //"GClass417": "BotTacticClass",
+    {
+      "RenameClassNameTo": "BotTacticClass",
+      "HasFields": [ "SubTactic" ]
+    },
     //"GClass429": "BotWeaponControllerClass",
+    {
+      "RenameClassNameTo": "BotWeaponControllerClass",
+      "HasMethods": [ "TakePrevWeapon" ]
+    },
     //"GClass443": "BodyPartClass",
+    {
+      "RenameClassNameTo": "BodyPartClass",
+      "HasFields": [ "Position", "Owner", "BodyPartType", "GrassDist", "GreenType" ],
+      "HasMethods": [ "Create" ]
+    },
     //"GClass465": "DeadBodiesControllerClass",
+    {
+      "RenameClassNameTo": "DeadBodiesControllerClass",
+      "HasMethods": [ "BodiesByGroup" ]
+    },
     //"GClass470": "BotRequestsControllerClass",
+    {
+      "RenameClassNameTo": "BotRequestsControllerClass",
+      "HasEvents": [ "OnAddRequest" ]
+    },
     //"GClass474": "BotsGroupClass",
     {
       "RenameClassNameTo": "BotsGroupClass",
