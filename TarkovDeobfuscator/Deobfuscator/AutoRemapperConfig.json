@@ -312,6 +312,12 @@
       "HasFields": [ "Grids", "Slots" ]
     },
     //"GClass210": "BossKnightBrainClass",
+    {
+      "RenameClassNameTo": "BossKnightBrainClass",
+      "IsClass": true,
+      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9", "gclass47_0" ],
+      "HasMethods": [ "ForceRecalcShootPos", "ShortName" ]
+    },
     //"GClass211": "ExUsecBrainClass",
     //"GClass224": "FollowerBigPiperainClass",
     //"GClass2119": "MagazineClass",
@@ -655,6 +661,9 @@
       "HasMethodsVirtual": [ "ShowGesture", "ReloadMag", "BlindFire", "OnFold" ]
     }
 
+
+    // ------------------------------------------------------------------------------------------
+    // MTGA Remapping List
 
   ],
   "DefinedTypesToForcePublic": [

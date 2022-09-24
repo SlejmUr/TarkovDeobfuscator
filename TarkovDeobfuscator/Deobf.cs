@@ -84,6 +84,7 @@ namespace TarkovDeobfuscator
                 assemblyDefinition.Write(cleanedDllPath);
             }
 
+
             if (doRemapping)
                 RemapKnownClasses(managedPath, cleanedDllPath);
             if (createBackup)
