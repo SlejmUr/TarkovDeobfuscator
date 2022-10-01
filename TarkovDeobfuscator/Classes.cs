@@ -25,6 +25,8 @@
         public string[] HasMethods { get; set; }
         public string[] HasMethodsVirtual { get; set; }
         public string[] HasEvents { get; set; }
+        public string[] HasInterfaces { get; set; }
+        public string[] HasNestedTypes { get; set; }
 
         public override string ToString()
         {

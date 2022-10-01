@@ -793,12 +793,63 @@
     {
       "RenameClassNameTo": "AbstractFirearmActioner",
       "HasMethodsVirtual": [ "ShowGesture", "ReloadMag", "BlindFire", "OnFold" ]
-    }
+    },
 
 
     // ------------------------------------------------------------------------------------------
     // MTGA Remapping List
-
+    // GInterface10 =>  IBackendStatus FIX THIS!
+    /*
+    {
+      "RenameClassNameTo": "IBackendStatus",
+      "IsInterface": true,
+      "HasExactFields": true,
+      "HasFields": [ "Status" ]
+    },*/
+    // GInterface11 =>  ITemplateCustomization
+    {
+      "RenameClassNameTo": "ITemplateCustomization",
+      "IsInterface": true,
+      "HasMethods": [ "GetTemplates", "GetCustomizations" ]
+    },
+    // GInterface150 =>  IRepairController
+    {
+      "RenameClassNameTo": "IRepairController",
+      "IsInterface": true,
+      "HasMethods": [ "RepairItemsByRepairKit" ]
+    },
+    // Class213 => BackendEvent
+    {
+      "RenameClassNameTo": "BackendEvent",
+      "IsClass": true,
+      "HasInterfaces": [ "ITemplateCustomization", "ISession", "ITradingSession", "IRepairController" ],
+      "HasEvents": [ "InventoryErrorHappened", "OnSessionError", "InventoryWarningHappened", "OnCaptchaRequired" ]
+    },
+    {
+      "RenameClassNameTo": "LocalBackendEvent",
+      "IsClass": true,
+      "ClassName": "BackendEvent1",
+      "HasEvents": [ "InventoryErrorHappened", "OnSessionError", "InventoryWarningHappened", "OnCaptchaRequired" ]
+    },
+    // Class212 => BackendSender (BackendEventx-1)
+    {
+      "RenameClassNameTo": "BackendSender",
+      "IsClass": true,
+      "HasFields": [ "string_1" ],
+      "HasInterfaces": [ "IBackendInterface" ],
+      "HasNestedTypes": [ "BackendEvent" ]
+    },
+    {
+      "RenameClassNameTo": "LocalBackendSender",
+      "IsClass": true,
+      "HasInterfaces": [ "IBackendInterface" ],
+      "HasNestedTypes": [ "LocalBackendEvent" ]
+    },
+    // Class211 => BackendCore
+    {
+      "RenameClassNameTo": "BackendCore",
+      "HasMethods": [ "GetMd5Hash" ]
+    }
   ],
   "DefinedTypesToForcePublic": [
     "BaseLocalGame"

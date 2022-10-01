@@ -426,6 +426,7 @@ namespace TarkovDeobfuscator
                                     || (x.Methods.Select(y => y.Name.Split('.')[y.Name.Split('.').Length - 1]).Count(y => config.HasMethods.Contains(y)) >= config.HasMethods.Length))
 
                             ).ToList();
+
                     // Filter Types by Virtual Methods
                     if (config.HasMethodsVirtual != null && config.HasMethodsVirtual.Length > 0)
                     {
@@ -474,7 +475,21 @@ namespace TarkovDeobfuscator
                             )
                         ).ToList();
 
+                    // Filter by Interfaces
+                    findTypes = findTypes.Where(x
+                        =>
+                            (config.HasInterfaces == null || config.HasInterfaces.Length == 0
+                                || (x.Interfaces.Select(y => y.InterfaceType.Name.Split('.')[y.InterfaceType.Name.Split('.').Length - 1]).Count(y => config.HasInterfaces.Contains(y)) >= config.HasInterfaces.Length))
 
+                        ).ToList();
+
+                    // Filter by Nested Types
+                    findTypes = findTypes.Where(x
+                        =>
+                            (config.HasNestedTypes == null || config.HasNestedTypes.Length == 0
+                                || (x.NestedTypes.Select(y => y.Name.Split('.')[y.Name.Split('.').Length - 1]).Count(y => config.HasNestedTypes.Contains(y)) >= config.HasNestedTypes.Length))
+
+                        ).ToList();
 
                     if (findTypes.Any())
                     {
@@ -491,7 +506,6 @@ namespace TarkovDeobfuscator
                                 var newClassName = config.RenameClassNameTo;
                                 var t = findTypes[index];
                                 var oldClassName = t.Name;
-
                                 if (t.IsInterface && !newClassName.StartsWith("I"))
                                 {
                                     newClassName = newClassName.Insert(0, "I");
