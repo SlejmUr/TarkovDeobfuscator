@@ -410,6 +410,7 @@ namespace TarkovDeobfuscator
 
                 try
                 {
+                    List<TypeDefinition> typeDefinitions = new();
                     var findTypes
                         = oldAssembly.MainModule.GetTypes().ToList();
                     // Filter Types by Class Name Matching
@@ -470,8 +471,9 @@ namespace TarkovDeobfuscator
                     findTypes = findTypes.Where(
                         x =>
                             (
-                                (!config.IsClass.HasValue || (config.IsClass.HasValue && config.IsClass.Value && (x.IsClass && !x.IsEnum && !x.IsInterface)))
-                                && (!config.IsInterface.HasValue || (config.IsInterface.HasValue && config.IsInterface.Value && (x.IsInterface && !x.IsEnum && !x.IsClass)))
+                                (!config.IsClass.HasValue     || (config.IsClass.HasValue     && config.IsClass.Value     && (x.IsClass && !x.IsEnum && !x.IsInterface)))
+                                && 
+                                (!config.IsInterface.HasValue || (config.IsInterface.HasValue && config.IsInterface.Value && (x.IsInterface && !x.IsEnum && !x.IsClass)))
                             )
                         ).ToList();
 
@@ -499,11 +501,161 @@ namespace TarkovDeobfuscator
 
                         ).ToList();
 
+                    // Filter with ExactProperties
+                    if (config.ExactProperties != null && config.ExactProperties.Length != 0)
+                    {
+                        foreach (var t in findTypes)
+                        {
+                            if (t.Properties.Count == config.ExactProperties.Length)
+                            {
+                                int okField = 0;
+                                for (int i = 0; i < config.ExactProperties.Length; i++)
+                                {
+                                    if (t.Properties[i].Name == config.ExactProperties[i])
+                                    {
+                                        WriteLog(i + " " + t.Name + " " + t.Properties[i].Name + " == " + config.ExactProperties[i].ToString());
+                                        okField++;
+                                    }
+                                }
+                                if (okField == config.ExactProperties.Length)
+                                {
+                                    WriteLog(t.Name + " is found!");
+                                    typeDefinitions.Add(t);
+                                }
+                            }
+                        }
+                        findTypes = typeDefinitions;
+                    }
+
                     // Filter with ExactFields
+                    if (config.ExactFields != null && config.ExactFields.Length != 0)
+                    {
+                        foreach (var t in findTypes)
+                        {
+                            if (t.Fields.Count == config.ExactFields.Length)
+                            {
+                                int okField = 0;
+                                for (int i = 0; i < config.ExactFields.Length; i++)
+                                {
+                                    if (t.Fields[i].Name == config.ExactFields[i])
+                                    {
+                                        WriteLog(i + " " + t.Name + " " + t.Fields[i].Name + " == " + config.ExactFields[i].ToString());
+                                        okField++;
+                                    }
+                                }
+                                if (okField == config.ExactFields.Length)
+                                {
+                                    WriteLog(t.Name + " is found!");
+                                    typeDefinitions.Add(t);
+                                }
+                            }
+                        }
+                        findTypes = typeDefinitions;
+                    }
 
+                    // Filter with ExactMethods
+                    if (config.ExactMethods != null && config.ExactMethods.Length != 0)
+                    {
+                        foreach (var t in findTypes)
+                        {
+                            if (t.Methods.Count == config.ExactMethods.Length)
+                            {
+                                int okField = 0;
+                                for (int i = 0; i < config.ExactMethods.Length; i++)
+                                {
+                                    if (t.Methods[i].Name == config.ExactMethods[i])
+                                    {
+                                        WriteLog(i + " " + t.Name + " " + t.Methods[i].Name + " == " + config.ExactMethods[i].ToString());
+                                        okField++;
+                                    }
+                                }
+                                if (okField == config.ExactMethods.Length)
+                                {
+                                    WriteLog(t.Name + " is found!");
+                                    typeDefinitions.Add(t);
+                                }
+                            }
+                        }
+                        findTypes = typeDefinitions;
+                    }
 
+                    // Filter with ExactEvents
+                    if (config.ExactEvents != null && config.ExactEvents.Length != 0)
+                    {
+                        foreach (var t in findTypes)
+                        {
+                            if (t.Events.Count == config.ExactEvents.Length)
+                            {
+                                int okField = 0;
+                                for (int i = 0; i < config.ExactEvents.Length; i++)
+                                {
+                                    if (t.Events[i].Name == config.ExactEvents[i])
+                                    {
+                                        WriteLog(i + " " + t.Name + " " + t.Events[i].Name + " == " + config.ExactEvents[i].ToString());
+                                        okField++;
+                                    }
+                                }
+                                if (okField == config.ExactEvents.Length)
+                                {
+                                    WriteLog(t.Name + " is found!");
+                                    typeDefinitions.Add(t);
+                                }
+                            }
+                        }
+                        findTypes = typeDefinitions;
+                    }
 
+                    // Filter with ExactInterfaces
+                    if (config.ExactInterfaces != null && config.ExactInterfaces.Length != 0)
+                    {
+                        foreach (var t in findTypes)
+                        {
+                            if (t.Interfaces.Count == config.ExactInterfaces.Length)
+                            {
+                                int okField = 0;
+                                for (int i = 0; i < config.ExactInterfaces.Length; i++)
+                                {
+                                    if (t.Interfaces[i].InterfaceType.Name == config.ExactInterfaces[i])
+                                    {
+                                        WriteLog(i + " " + t.Name + " " + t.Interfaces[i].InterfaceType.Name + " == " + config.ExactInterfaces[i].ToString());
+                                        okField++;
+                                    }
+                                }
+                                if (okField == config.ExactInterfaces.Length)
+                                {
+                                    WriteLog(t.Name + " is found!");
+                                    typeDefinitions.Add(t);
+                                }
+                            }
+                        }
+                        findTypes = typeDefinitions;
+                    }
 
+                    // Filter with ExactNestedTypes
+                    if (config.ExactNestedTypes != null && config.ExactNestedTypes.Length != 0)
+                    {
+                        foreach (var t in findTypes)
+                        {
+                            if (t.Interfaces.Count == config.ExactNestedTypes.Length)
+                            {
+                                int okField = 0;
+                                for (int i = 0; i < config.ExactNestedTypes.Length; i++)
+                                {
+                                    if (t.NestedTypes[i].Name == config.ExactNestedTypes[i])
+                                    {
+                                        WriteLog(i + " " + t.Name + " " + t.NestedTypes[i].Name + " == " + config.ExactNestedTypes[i].ToString());
+                                        okField++;
+                                    }
+                                }
+                                if (okField == config.ExactNestedTypes.Length)
+                                {
+                                    WriteLog(t.Name + " is found!");
+                                    typeDefinitions.Add(t);
+                                }
+                            }
+                        }
+                        findTypes = typeDefinitions;
+                    }
 
 
                     if (findTypes.Any())
@@ -580,6 +732,15 @@ namespace TarkovDeobfuscator
         {
             if (!File.Exists(assemblyPath + ".backup"))
                 File.Copy(assemblyPath, assemblyPath + ".backup", false);
+        }
+        public static void WriteLog(string strLog)
+        {
+            FileInfo logFileInfo = new FileInfo("log.txt");
+            DirectoryInfo logDirInfo = new DirectoryInfo(logFileInfo.DirectoryName);
+            if (!logDirInfo.Exists) logDirInfo.Create();
+            using FileStream fileStream = new FileStream("log.txt", FileMode.Append);
+            using StreamWriter log = new StreamWriter(fileStream);
+            log.WriteLine(DateTime.Now + " | " + strLog);
         }
     }
 }

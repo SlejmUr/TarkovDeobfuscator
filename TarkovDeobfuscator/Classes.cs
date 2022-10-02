@@ -18,16 +18,22 @@
         public bool? OnlyTargetInterface { get; set; }
         public bool? IsClass { get; set; }
         public bool? IsInterface { get; set; }
-        public bool? IsStruct { get; set; } //Todo make this one
+        public bool? IsStruct { get; set; } // Mono.Cecil isnt good with IsStruct or smth like this
         public bool HasExactFields { get; set; }
         public string[] HasFields { get; set; }
-        public string[] ExactFields { get; set; } //Todo make this one
+        public string[] ExactFields { get; set; }
         public string[] HasProperties { get; set; }
+        public string[] ExactProperties { get; set; }
         public string[] HasMethods { get; set; }
+        public string[] ExactMethods { get; set; }
         public string[] HasMethodsVirtual { get; set; }
+        public string[] ExactMethodsVirtual { get; set; } //This will be a little bit more "fun" to implement
         public string[] HasEvents { get; set; }
+        public string[] ExactEvents { get; set; }
         public string[] HasInterfaces { get; set; }
+        public string[] ExactInterfaces { get; set; }
         public string[] HasNestedTypes { get; set; }
+        public string[] ExactNestedTypes { get; set; }
 
         public override string ToString()
         {

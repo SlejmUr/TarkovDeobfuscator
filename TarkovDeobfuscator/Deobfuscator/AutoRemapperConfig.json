@@ -936,16 +936,14 @@
       "RenameClassNameTo": "IItemKV",
       "IsInterface": true,
       "HasEvents": [ "ItemAdded", "ItemRemoved" ],
-      "HasFields": [ "Items" ]
+      "ExactProperties": [ "Items" ]
     },
-    //  GInterface10  - TODO: Make this only one.
-    /*
+    //  GInterface10
     {
       "RenameClassNameTo": "IBackendStatus",
       "IsInterface": true,
-      "HasExactFields": true,
-      "HasFields": [ "Status" ]
-    }*/
+      "ExactProperties": [ "Status" ]
+    }
   ],
   "DefinedTypesToForcePublic": [
     "BaseLocalGame"
