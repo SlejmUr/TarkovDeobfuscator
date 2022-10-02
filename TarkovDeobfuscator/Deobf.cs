@@ -491,6 +491,21 @@ namespace TarkovDeobfuscator
 
                         ).ToList();
 
+                    // Filter by Properties
+                    findTypes = findTypes.Where(x
+                        =>
+                            (config.HasProperties == null || config.HasProperties.Length == 0
+                                || (x.Properties.Select(y => y.Name.Split('.')[y.Name.Split('.').Length - 1]).Count(y => config.HasProperties.Contains(y)) >= config.HasProperties.Length))
+
+                        ).ToList();
+
+                    // Filter with ExactFields
+
+
+
+
+
+
                     if (findTypes.Any())
                     {
                         if (findTypes.Count() > 1)

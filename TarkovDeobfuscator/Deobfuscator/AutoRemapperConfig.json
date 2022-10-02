@@ -849,7 +849,103 @@
     {
       "RenameClassNameTo": "BackendCore",
       "HasMethods": [ "GetMd5Hash" ]
-    }
+    },
+    // GClass1611
+    {
+      "RenameClassNameTo": "BarterJson",
+      "HasFields": [ "_tpl", "count", "level", "onlyFunctional" ],
+      "HasMethods": []
+    },
+    // GClass1612
+    {
+      "RenameClassNameTo": "ErrorCallback",
+      "HasFields": [ "errorCode", "error" ]
+    },
+    // GClass551
+    {
+      "RenameClassNameTo": "ResultJson",
+      "HasFields": [ "err", "errmsg", "data", "crc" ],
+      "HasMethods": []
+    },
+    // GClass757
+    {
+      "RenameClassNameTo": "ConfigManager",
+      "IsClass": true,
+      "HasMethods": [ "PatchConfig" ],
+      "HasNestedTypes": [ "PoolsSettings", "ProfilingSettings", "CharacterControllerSettings", "NetworkConfig", "LogConfig" ]
+    },
+    // GClass545
+    {
+      "RenameClassNameTo": "BackendConfig",
+      "HasMethods": [ "LoadApplicationConfig" ]
+    },
+    // GClass546
+    {
+      "RenameClassNameTo": "IsStaticBuildingClass",
+      "HasFields": [ "IsExportInProgress" ]
+    },
+    // GClass705
+    {
+      "RenameClassNameTo": "ProcessMemoryInfo",
+      "HasMethods": [ "GetProcessMemoryInfo" ]
+    },
+    // GClass548
+    {
+      "RenameClassNameTo": "LogMemory",
+      "HasMethods": [ "LogMemoryConsumption" ]
+    },
+    // Class994
+    {
+      "RenameClassNameTo": "ScenePresetLoader",
+      "HasFields": [ "totalScenes" ]
+    },
+    // GClass1578
+    {
+      "RenameClassNameTo": "ScenePresetWorker",
+      "HasNestedTypes": [ "ScenePresetLoader" ]
+    },
+    // GClass993
+    {
+      "RenameClassNameTo": "KernelSSD",
+      "HasMethods": [ "IsSsd" ]
+    },
+    // GClass992
+    {
+      "RenameClassNameTo": "Vector3Point",
+      "HasMethods": [ "GetFirstDerivative" ]
+    },
+    // GClass991
+    {
+      "RenameClassNameTo": "Texture2DApplier",
+      "HasMethods": [ "fromGradient" ]
+    },
+    // GClass990
+    {
+      "RenameClassNameTo": "TalkTimer",
+      "HasMethods": [ "IsTalkDetected" ]
+    },
+    // GInterface4
+    {
+      "RenameClassNameTo": "IBossPosition",
+      "IsInterface": true,
+      "HasEvents": [ "OnPositionsRecalculated" ],
+      "HasMethods": [ "FollowersPositions", "SetFollowersPositions", "GetTargetToLook" ]
+    },
+    // GInterface285
+    {
+      "RenameClassNameTo": "IItemKV",
+      "IsInterface": true,
+      "HasEvents": [ "ItemAdded", "ItemRemoved" ],
+      "HasFields": [ "Items" ]
+    },
+    //  GInterface10  - TODO: Make this only one.
+    /*
+    {
+      "RenameClassNameTo": "IBackendStatus",
+      "IsInterface": true,
+      "HasExactFields": true,
+      "HasFields": [ "Status" ]
+    }*/
   ],
   "DefinedTypesToForcePublic": [
     "BaseLocalGame"
