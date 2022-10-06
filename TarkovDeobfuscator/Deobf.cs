@@ -524,7 +524,6 @@ namespace TarkovDeobfuscator
                                 }
                             }
                         }
-                        findTypes = typeDefinitions;
                     }
 
                     // Filter with ExactFields
@@ -550,7 +549,6 @@ namespace TarkovDeobfuscator
                                 }
                             }
                         }
-                        findTypes = typeDefinitions;
                     }
 
                     // Filter with ExactMethods
@@ -576,7 +574,6 @@ namespace TarkovDeobfuscator
                                 }
                             }
                         }
-                        findTypes = typeDefinitions;
                     }
 
                     // Filter with ExactEvents
@@ -602,7 +599,6 @@ namespace TarkovDeobfuscator
                                 }
                             }
                         }
-                        findTypes = typeDefinitions;
                     }
 
                     // Filter with ExactInterfaces
@@ -628,7 +624,6 @@ namespace TarkovDeobfuscator
                                 }
                             }
                         }
-                        findTypes = typeDefinitions;
                     }
 
                     // Filter with ExactNestedTypes
@@ -654,10 +649,11 @@ namespace TarkovDeobfuscator
                                 }
                             }
                         }
-                        findTypes = typeDefinitions;
                     }
 
-
+                    if (typeDefinitions.Count() > 0)
+                    { findTypes = typeDefinitions; }
+                    
                     if (findTypes.Any())
                     {
                         if (findTypes.Count() > 1)

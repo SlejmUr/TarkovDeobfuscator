@@ -943,6 +943,39 @@
       "RenameClassNameTo": "IBackendStatus",
       "IsInterface": true,
       "ExactProperties": [ "Status" ]
+    },
+    //  GClass579
+    {
+      "RenameClassNameTo": "PlayerScavProfileData",
+      "HasInterfaces": [ "IProfileData" ],
+      "HasMethods": [ "CanSpawnByHour" ],
+      "HasProperties": [ "Side", "SpawnParams" ],
+      "HasFields": [ "nullable_0", "gclass567_0" ],
+      "ExactFields": [ "nullable_0", "gclass567_0" ],
+      "ExactProperties": [ "Side", "SpawnParams" ]
+
+    },
+    //  GClass578
+    {
+      "RenameClassNameTo": "BotScavProfileData",
+      "HasInterfaces": [ "IProfileData" ],
+      "HasMethods": [ "CanSpawnByHour" ],
+      "HasFields": [ "float_0", "float_1", "float_2" ]
+    },
+    // Fixing Bullshit ^^
+    {
+      "RenameClassNameTo": "PlayerScavProfileData",
+      "ClassName": "PlayerScavProfileData2"
+    },
+    // GClass1536
+    {
+      "RenameClassNameTo": "SlotsItemInfo",
+      "HasMethods": [ "ToInventorySyncPacket" ]
+    },
+    // GClass1622
+    {
+      "RenameClassNameTo": "UI_Locale",
+      "HasMethods": [ "UpdateApplicationLanguage" ]
     }
   ],
   "DefinedTypesToForcePublic": [
