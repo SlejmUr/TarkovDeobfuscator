@@ -971,6 +971,11 @@
     {
       "RenameClassNameTo": "UI_Locale",
       "HasMethods": [ "UpdateApplicationLanguage" ]
+    },
+    // GClass708
+    {
+      "RenameClassNameTo": "LayerMaskController ",
+      "HasFields": [ "TriggersLayer" ]
     }
   ],
   "DefinedTypesToForcePublic": [
