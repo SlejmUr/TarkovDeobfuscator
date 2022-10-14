@@ -277,9 +277,7 @@
     {
       "RenameClassNameTo": "BotBaseBrainClass",
       "IsClass": true,
-      "HasFields": [ "FORCE_ATTACK_EVENT", "PURSUIT_LAYER", "DEBUG_LOGIC" ],
-      "HasEvents": [],
-      "HasMethods": [ "FindPoint", "ActivateDebug", "CalcActionNextFrame", "ActivateForceStrike" ]
+      "HasMethods": [ "FindPoint", "ActivateDebug", "CalcActionNextFrame" ]
     },
     //"GClass204": "BossBullyBrainClass",
     {
@@ -380,13 +378,13 @@
       "RenameClassNameTo": "RaiderBrainClass",
       "IsClass": true,
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9", "int_10" ],
-      "HasMethods": [ "ShortName", "method_5" ]
+      "HasMethods": [ "ShortName", "method_6", "method_7" ]
     },
     //"GClass228": "BossKojaniyBrainClass",
     {
-      "RenameClassNameTo": "RaiderBrainClass",
+      "RenameClassNameTo": "BossKojaniyBrainClass",
       "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "gclass61_0", "gclass63_0", "gclass70_0" ],
+      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "gclass61_0", "gclass63_0", "gclass70_0" ],
       "HasMethods": [ "ShortName", "SetCorePosition" ]
     },
     //"GClass242": "ShootPointClass",
@@ -944,28 +942,25 @@
       "IsInterface": true,
       "ExactProperties": [ "Status" ]
     },
-    //  GClass579
+    //  GClass584
     {
       "RenameClassNameTo": "PlayerScavProfileData",
       "HasInterfaces": [ "IProfileData" ],
-      "HasMethods": [ "CanSpawnByHour" ],
+      "HasMethods": [ "CanSpawnByHour", "ChooseProfile" ],
       "HasProperties": [ "Side", "SpawnParams" ],
-      "HasFields": [ "nullable_0", "gclass567_0" ],
-      "ExactFields": [ "nullable_0", "gclass567_0" ],
+      "HasFields": [ "nullable_0" ],
       "ExactProperties": [ "Side", "SpawnParams" ]
-
     },
     //  GClass578
     {
       "RenameClassNameTo": "BotScavProfileData",
       "HasInterfaces": [ "IProfileData" ],
-      "HasMethods": [ "CanSpawnByHour" ],
-      "HasFields": [ "float_0", "float_1", "float_2" ]
+      "HasMethods": [ "SameSide" ]
     },
     // Fixing Bullshit ^^
     {
       "RenameClassNameTo": "PlayerScavProfileData",
-      "ClassName": "PlayerScavProfileData2"
+      "ClassName": "PlayerScavProfileData1"
     },
     // GClass1536
     {
