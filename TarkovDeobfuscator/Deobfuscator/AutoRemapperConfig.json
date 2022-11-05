@@ -309,6 +309,7 @@
       "IsClass": true,
       "HasFields": [ "Grids", "Slots" ]
     },
+    /*
     //"GClass210": "BossKnightBrainClass",
     {
       "RenameClassNameTo": "BossKnightBrainClass",
@@ -321,7 +322,7 @@
       "RenameClassNameTo": "ExUsecBrainClass",
       "IsClass": true,
       "HasFields": [ "stationaryWeaponLink_0", "gclass351_0", "hashSet_1" ]
-    },
+    },*/
     //"GClass224": "FollowerBigPiperainClass",
     {
       "RenameClassNameTo": "FollowerBigPiperainClass",
@@ -380,13 +381,14 @@
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9", "int_10" ],
       "HasMethods": [ "ShortName", "method_6", "method_7" ]
     },
+    /*
     //"GClass228": "BossKojaniyBrainClass",
     {
       "RenameClassNameTo": "BossKojaniyBrainClass",
       "IsClass": true,
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "gclass61_0", "gclass63_0", "gclass70_0" ],
       "HasMethods": [ "ShortName", "SetCorePosition" ]
-    },
+    },*/
     //"GClass242": "ShootPointClass",
     {
       "RenameClassNameTo": "ShootPointClass",
@@ -974,8 +976,13 @@
     },
     // GClass708
     {
-      "RenameClassNameTo": "LayerMaskController ",
+      "RenameClassNameTo": "LayerMaskController",
       "HasFields": [ "TriggersLayer" ]
+    },
+    // GClass1908
+    {
+      "RenameClassNameTo": "StatusEffect",
+      "HasMethods": [ "ForceResidue", "method_0" ]
     }
   ],
   "DefinedTypesToForcePublic": [
