@@ -994,5 +994,6 @@
   ],
   "TypesToForceAllPublicFieldsAndProperties": [
     //"BaseLocalGame"
-  ]
+  ],
+  "ForceAllToPublic" : true
 }

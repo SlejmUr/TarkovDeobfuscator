@@ -391,6 +391,42 @@ namespace TarkovDeobfuscator
                     }
                 }
             }
+            Log($"Remapper: Setting All Types to public");
+            if (autoRemapperConfig.ForceAllToPublic)
+            {
+                var foundTypes = oldAssembly.MainModule.GetTypes();
+
+                foreach (var t in foundTypes)
+                {
+                    t.IsPublic = true;
+                    foreach (var m in t.Fields)
+                    {
+                        if (!m.IsPublic)
+                            m.IsPublic = true;
+                    }
+                    foreach (var m in t.Methods)
+                    {
+                        if (!m.IsPublic)
+                            m.IsPublic = true;
+                    }
+                    foreach (var m in t.NestedTypes)
+                    {
+                        if (!m.IsPublic)
+                            m.IsPublic = true;
+                    }
+                    foreach (var m in t.Events)
+                    {
+                        if (!m.DeclaringType.IsPublic)
+                            m.DeclaringType.IsPublic = true;
+                    }
+                    foreach (var m in t.Properties)
+                    {
+                        if (!m.DeclaringType.IsPublic)
+                            m.DeclaringType.IsPublic = true;
+                    }
+                }
+
+            }
 
 
             autoRemappedClassCount = renamedClasses.Count;
