@@ -9,6 +9,7 @@
         public string[] DefinedTypesToForcePublic { get; set; }
         public string[] TypesToForceAllPublicMethods { get; set; }
         public string[] TypesToForceAllPublicFieldsAndProperties { get; set; }
+        public string[] ForceTypeToPublic { get; set; }
         public bool ForceAllToPublic { get; set; }
     }
     public class AutoRemapperInfo

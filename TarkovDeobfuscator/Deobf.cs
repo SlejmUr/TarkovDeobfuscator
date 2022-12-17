@@ -122,7 +122,7 @@ namespace TarkovDeobfuscator
                         RemapperConfig autoRemapperConfig = JsonConvert.DeserializeObject<RemapperConfig>(File.ReadAllText(Directory.GetCurrentDirectory() + "//Deobfuscator/AutoRemapperConfig.json"));
                         RemapByAutoConfiguration(oldAssembly, autoRemapperConfig);
                         RemapByDefinedConfiguration(oldAssembly, autoRemapperConfig);
-
+                        RemapAfterEverything(oldAssembly, autoRemapperConfig);
                         oldAssembly.Write(assemblyPath.Replace(".dll", "-remapped.dll"));
                     }
                 }
@@ -391,6 +391,7 @@ namespace TarkovDeobfuscator
                     }
                 }
             }
+
             Log($"Remapper: Setting All Types to public");
             if (autoRemapperConfig.ForceAllToPublic)
             {
@@ -752,6 +753,22 @@ namespace TarkovDeobfuscator
 
             Log($"Defined Remapper: SUCCESS: {countOfDefinedMappingSucceeded}");
             Log($"Defined Remapper: FAILED: {countOfDefinedMappingFailed}");
+        }
+
+        static void RemapAfterEverything(AssemblyDefinition oldAssembly, RemapperConfig autoRemapperConfig)
+        {
+            Log($"Remapper: Setting Types to public");
+            foreach (var ctf in autoRemapperConfig.ForceTypeToPublic)
+            {
+                var foundTypes = oldAssembly.MainModule.GetTypes()
+                    .Where(x => x.Name.Contains(ctf, StringComparison.OrdinalIgnoreCase));
+                foreach (var t in foundTypes)
+                {
+                    Log(t.FullName + " is now Public");
+                    if (!t.IsPublic)
+                        t.IsPublic = true;
+                }
+            }
         }
 
         public static string[] SplitCamelCase(string input)
