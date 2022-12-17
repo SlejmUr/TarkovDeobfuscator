@@ -29,7 +29,7 @@
     {
       "RenameClassNameTo": "DataHandler",
       "HasFields": [ "WebDiagnosticsEnabled" ],
-      "HasMethods": [ "RunConnectionDiagnostics" ]
+      "HasMethods": [ "SendAndHandleRetries" ]
     },
     //"Class708": "SslCertPatchClass",
     {
@@ -89,7 +89,7 @@
     //"GClass1236": "LocalizationClass",
     {
       "RenameClassNameTo": "LocalizationClass",
-      "HasFields": [ "mail", "repeatableQuest", "handbook", "preset", "error", "quest" ]
+      "HasMethods": [ "ConvertToLocale" ]
     },
     //"GClass1301": "BotControllerClass",
     {
@@ -655,7 +655,7 @@
     {
       "RenameClassNameTo": "IBackendInterface",
       "IsInterface": true,
-      "HasFields": [ "Session", "TradingSession" ],
+      "HasFields": [ "Session" ],
       "HasMethods": [ "RegisterDevice", "Login", "GetAvailableLanguages" ]
     },
     //"GInterface290": "IBundleLock",
@@ -822,7 +822,7 @@
     {
       "RenameClassNameTo": "BackendEvent",
       "IsClass": true,
-      "HasInterfaces": [ "ITemplateCustomization", "ISession", "ITradingSession", "IRepairController" ],
+      "HasInterfaces": [ "ITemplateCustomization", "ISession", "ITrading", "IRepairController" ],
       "HasEvents": [ "InventoryErrorHappened", "OnSessionError", "InventoryWarningHappened", "OnCaptchaRequired" ]
     },
     {
@@ -835,15 +835,9 @@
     {
       "RenameClassNameTo": "BackendSender",
       "IsClass": true,
-      "HasFields": [ "string_1" ],
+      "HasFields": [ "string_0" ],
       "HasInterfaces": [ "IBackendInterface" ],
       "HasNestedTypes": [ "BackendEvent" ]
-    },
-    {
-      "RenameClassNameTo": "LocalBackendSender",
-      "IsClass": true,
-      "HasInterfaces": [ "IBackendInterface" ],
-      "HasNestedTypes": [ "LocalBackendEvent" ]
     },
     // Class211 => BackendCore
     {
@@ -982,7 +976,12 @@
     // GClass1908
     {
       "RenameClassNameTo": "StatusEffect",
-      "HasMethods": [ "ForceResidue", "method_0" ]
+      "HasMethods": [ "ForceResidue", "AddWorkTime", "SetStrength", "SerializeState", "AddWholeTime" ]
+    },
+    // TransportPrefix
+    {
+      "RenameClassNameTo": "TransportPrefix",
+      "HasMethods": [ "CreateFromLegacyParams" ]
     }
   ],
   "DefinedTypesToForcePublic": [
@@ -995,5 +994,5 @@
   "TypesToForceAllPublicFieldsAndProperties": [
     //"BaseLocalGame"
   ],
-  "ForceAllToPublic" : true
+  "ForceAllToPublic": false
 }
