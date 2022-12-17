@@ -982,7 +982,7 @@
     // GClass1908
     {
       "RenameClassNameTo": "StatusEffect",
-      "HasMethods": [ "ForceResidue", "method_0" ]
+      "HasMethods": [ "ForceResidue", "AddWorkTime", "SetStrength", "SerializeState", "AddWholeTime" ]
     }
   ],
   "DefinedTypesToForcePublic": [
