@@ -209,12 +209,6 @@
       "HasFields": [],
       "HasMethods": [ "Init", "InitStaticObject", "SetSyncObject", "ManualUpdate", "UpdateSyncObjectData", "TakeFromPool", "ReturnToPool" ]
     },
-    //"GClass1827": "AirplaneLogicClass",
-    {
-      "RenameClassNameTo": "AirplaneLogicClass",
-      "HasFields": [ "float_0" ],
-      "HasMethods": [ "Init", "InitStaticObject", "SetSyncObject", "ManualUpdate", "UpdateSyncObjectData", "TakeFromPool", "ReturnToPool", "PlaySpeechFromTime" ]
-    },
     //"GClass1850": "QuestDataClass",
     {
       "RenameClassNameTo": "QuestDataClass",
@@ -584,7 +578,7 @@
     {
       "RenameClassNameTo": "ISession",
       "IsInterface": true,
-      "HasMethods": [ "ChangeNickname", "ValidateNickname", "GetReservedNickname", "GetProfiles", "GetRaidReadyStatus", "StartGameGroupPlayer", "ChatSendMessage" ]
+      "HasMethods": [ "ChatSendMessage" ]
     },
     //"GInterface12": "IGame",
     {
@@ -699,7 +693,7 @@
       "RenameClassNameTo": "ISession",
       "IsInterface": true,
       "HasFields": [],
-      "HasMethods": [ "ChangeNickname", "ValidateNickname", "GetReservedNickname", "GetProfiles", "GetRaidReadyStatus", "StartGameGroupPlayer", "ChatSendMessage" ]
+      "HasMethods": [ "ChatSendMessage" ]
     },
     {
       "RenameClassNameTo": "PoolManager",
@@ -822,14 +816,14 @@
     {
       "RenameClassNameTo": "BackendEvent",
       "IsClass": true,
-      "HasInterfaces": [ "ITemplateCustomization", "ISession", "ITrading", "IRepairController" ],
-      "HasEvents": [ "InventoryErrorHappened", "OnSessionError", "InventoryWarningHappened", "OnCaptchaRequired" ]
+      "HasInterfaces": [ "ITemplateCustomization", "ISession" ],
+      "HasEvents": [ "OnSessionError" ]
     },
     {
       "RenameClassNameTo": "LocalBackendEvent",
       "IsClass": true,
       "ClassName": "BackendEvent1",
-      "HasEvents": [ "InventoryErrorHappened", "OnSessionError", "InventoryWarningHappened", "OnCaptchaRequired" ]
+      "HasEvents": [ "OnSessionError" ]
     },
     // Class212 => BackendSender (BackendEventx-1)
     {
@@ -887,16 +881,6 @@
     {
       "RenameClassNameTo": "LogMemory",
       "HasMethods": [ "LogMemoryConsumption" ]
-    },
-    // Class994
-    {
-      "RenameClassNameTo": "ScenePresetLoader",
-      "HasFields": [ "totalScenes" ]
-    },
-    // GClass1578
-    {
-      "RenameClassNameTo": "ScenePresetWorker",
-      "HasNestedTypes": [ "ScenePresetLoader" ]
     },
     // GClass993
     {
@@ -987,6 +971,17 @@
     {
       "RenameClassNameTo": "AvailableActions",
       "HasMethods": [ "GetAvailableActions" ]
+    },
+    // Inside CommonClientApplication (Class1133)
+    {
+      "RenameClassNameTo": "CAFileChecker",
+      "HasMethods": [ "method_0" ],
+      "HasFields": [ "filesChecker", "ordinaryFileEnsuranceMode", "criticalFileEnsuranceMode", "token" ]
+    },
+    {
+      "RenameClassNameTo": "CAFileCheckerSingle",
+      "HasMethods": [ "method_0" ],
+      "HasFields": [ "filesChecker", "ordinaryFileEnsuranceMode", "criticalFileEnsuranceMode", "resultPath" ]
     }
   ],
   "DefinedTypesToForcePublic": [
