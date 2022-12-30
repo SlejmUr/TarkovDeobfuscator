@@ -982,6 +982,16 @@
       "RenameClassNameTo": "CAFileCheckerSingle",
       "HasMethods": [ "method_0" ],
       "HasFields": [ "filesChecker", "ordinaryFileEnsuranceMode", "criticalFileEnsuranceMode", "resultPath" ]
+    },
+    {
+      "RenameClassNameTo": "AirplaneLogicClass",
+      "IsClass": true,
+      "ClassName": "AirdropLogicClass1"
+    },
+    {
+      "RenameClassNameTo": "LocalBackendCommands",
+      "HasInterfaces": [ "ITemplateCustomization", "IBackEndSession2", "IBackEndSession", "ISession", "ITrading", "IRepairController" ],
+      "HasMethods": [ "method_25" ],
     }
   ],
   "DefinedTypesToForcePublic": [
