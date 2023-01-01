@@ -10,21 +10,6 @@
       "RenameClassNameTo": "BattleeyePatchClass",
       "HasMethods": [ "RunValidation" ]
     },
-    //{
-    //  "RenameClassNameTo": "PostRaidHealthScreenClass",
-    //  "ClassName": null,
-    //  "HasFields": [ "exitStatus_0" ],
-    //  "HasMethods": [ "OnProfileChangeApplied" ]
-    //},
-    // not working
-    //{
-    //  "RenameClassNameTo": "SpawnSystemClass",
-    //  "ClassName": "Class1891",
-    //  "IsClass": true,
-    //  "IsInterface": false,
-    //  "HasFields": [],
-    //  "HasMethods": []
-    //},
     //    "Class220": "DataHandler",
     {
       "RenameClassNameTo": "DataHandler",
@@ -140,11 +125,6 @@
       "RenameClassNameTo": "SkillsClass",
       "IsClass": true,
       "HasEvents": [ "OnSkillLevelChanged", "WeaponMastered", "OnSkillExperienceChanged", "OnMasteringExperienceChanged", "NewWeaponMastered" ]
-    },
-    //"GClass1572": "PoolManager",
-    {
-      "RenameClassNameTo": "PoolManager",
-      "HasMethods": [ "LoadBundlesAndCreatePools" ]
     },
     //"GClass1595": "MainMenuController",
     {
@@ -303,20 +283,6 @@
       "IsClass": true,
       "HasFields": [ "Grids", "Slots" ]
     },
-    /*
-    //"GClass210": "BossKnightBrainClass",
-    {
-      "RenameClassNameTo": "BossKnightBrainClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9", "gclass47_0" ],
-      "HasMethods": [ "ForceRecalcShootPos", "ShortName" ]
-    },
-    //"GClass211": "ExUsecBrainClass",
-    {
-      "RenameClassNameTo": "ExUsecBrainClass",
-      "IsClass": true,
-      "HasFields": [ "stationaryWeaponLink_0", "gclass351_0", "hashSet_1" ]
-    },*/
     //"GClass224": "FollowerBigPiperainClass",
     {
       "RenameClassNameTo": "FollowerBigPiperainClass",
@@ -375,14 +341,6 @@
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9", "int_10" ],
       "HasMethods": [ "ShortName", "method_6", "method_7" ]
     },
-    /*
-    //"GClass228": "BossKojaniyBrainClass",
-    {
-      "RenameClassNameTo": "BossKojaniyBrainClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "gclass61_0", "gclass63_0", "gclass70_0" ],
-      "HasMethods": [ "ShortName", "SetCorePosition" ]
-    },*/
     //"GClass242": "ShootPointClass",
     {
       "RenameClassNameTo": "ShootPointClass",
@@ -395,7 +353,7 @@
     },
     //"GClass2547": "InsuranceCompanyClass",
     {
-      "RenameClassNameTo": "AICoreControllerClass",
+      "RenameClassNameTo": "InsuranceCompanyClass",
       "HasMethods": [ "ClearInsuredItems" ]
     },
     //"GClass2548": "ItemClass",
@@ -690,12 +648,6 @@
     // ------------------------------------------------------------------------------------------
     // SIT Remapping List
     {
-      "RenameClassNameTo": "ISession",
-      "IsInterface": true,
-      "HasFields": [],
-      "HasMethods": [ "ChatSendMessage" ]
-    },
-    {
       "RenameClassNameTo": "PoolManager",
       "HasFields": [],
       "HasMethods": [ "LoadBundlesAndCreatePools" ]
@@ -730,11 +682,6 @@
       "HasFields": [],
       "HasMethods": [ "BeginStatisticsSession", "EndStatisticsSession" ]
     },
-    //{
-    //  "RenameClassNameTo": "GInventoryManagement",
-    //  "HasFields": [],
-    //  "HasMethods": [ "IsLimitedAtAddress", "CheckOverLimit" ]
-    //},
     {
       "RenameClassNameTo": "GGroupManagement",
       "HasFields": [],
@@ -765,11 +712,6 @@
       "HasFields": [ "BossSpawnWaves", "HaveSectants" ],
       "HasMethods": [ "Run", "Stop" ]
     },
-    //{
-    //  "RenameClassNameTo": "PlayerGameAction",
-    //  "HasFields": [],
-    //  "HasMethods": [ "PlayerComeToPlace", "AnyEvent", "ExitActivated", "PlaySound", "TrainCome", "GrenadeExplosion", "InteractObject", "Kill", "ThrowGrenade" ]
-    //}
     {
       "RenameClassNameTo": "GlobalScreenController",
       "HasFields": [ "CurrentScreenController" ],
@@ -792,14 +734,6 @@
 
     // ------------------------------------------------------------------------------------------
     // MTGA Remapping List
-    // GInterface10 =>  IBackendStatus FIX THIS!
-    /*
-    {
-      "RenameClassNameTo": "IBackendStatus",
-      "IsInterface": true,
-      "HasExactFields": true,
-      "HasFields": [ "Status" ]
-    },*/
     // GInterface11 =>  ITemplateCustomization
     {
       "RenameClassNameTo": "ITemplateCustomization",
@@ -991,7 +925,7 @@
     {
       "RenameClassNameTo": "LocalBackendCommands",
       "HasInterfaces": [ "ITemplateCustomization", "IBackEndSession2", "IBackEndSession", "ISession", "ITrading", "IRepairController" ],
-      "HasMethods": [ "method_25" ],
+      "HasMethods": [ "method_25" ]
     }
   ],
   "DefinedTypesToForcePublic": [
