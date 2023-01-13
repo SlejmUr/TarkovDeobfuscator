@@ -769,6 +769,26 @@ namespace TarkovDeobfuscator
                         t.IsPublic = true;
                 }
             }
+
+            if (autoRemapperConfig.RenameEmptyToACS)
+            {
+                Log($"Remapper: Setting No Namespace to ACS.");
+                var emptynamespace = oldAssembly.MainModule.GetTypes()
+                       .Where(x => !x.FullName.Contains("."));
+                foreach (var t in emptynamespace)
+                {
+                    if (t.FullName.Contains("<Module>"))
+                        continue;
+                    t.Namespace = "ACS";
+                    foreach (var tn in t.NestedTypes)
+                    {
+                        tn.Namespace = "ACS";
+                    }
+
+                }
+            }
+
+            
         }
 
         public static string[] SplitCamelCase(string input)

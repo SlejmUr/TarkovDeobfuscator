@@ -11,6 +11,7 @@
         public string[] TypesToForceAllPublicFieldsAndProperties { get; set; }
         public string[] ForceTypeToPublic { get; set; }
         public bool ForceAllToPublic { get; set; }
+        public bool RenameEmptyToACS { get; set; }
     }
     public class AutoRemapperInfo
     {
