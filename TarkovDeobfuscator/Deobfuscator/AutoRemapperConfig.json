@@ -290,9 +290,9 @@
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4" ],
       "HasMethods": [ "ShortName" ]
     },
-    //"GClass2119": "MagazineClass",
+    //"GClass2119": "Magazine",
     {
-      "RenameClassNameTo": "MagazineClass",
+      "RenameClassNameTo": "Magazine",
       "IsClass": true,
       "HasFields": [ "Tag" ],
       "HasMethods": [ "GetMaxVisibleAmmo", "CheckCompatibility", "GetAmmoCountByLevel" ]
@@ -304,7 +304,7 @@
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9" ],
       "HasMethods": [ "ShortName" ]
     },
-    //"GClass2152": "EquipmentClass",
+    //"GClass2152": "EquipmentClass", Inventory from Items.json
     {
       "RenameClassNameTo": "EquipmentClass",
       "IsClass": true,
@@ -730,6 +730,14 @@
       "RenameClassNameTo": "AbstractFirearmActioner",
       "HasMethodsVirtual": [ "ShowGesture", "ReloadMag", "BlindFire", "OnFold" ]
     },
+    {
+      "RenameClassNameTo": "JsonConvertersClass",
+      "HasFields": [ "Converters" ]
+    },
+    {
+      "RenameClassNameTo": "JsonUtilityClass",
+      "HasMethods": [ "ParseJsonTo", "PopulateJson", "ToJson", "ToPrettyJson", "ToUnparsedData" ]
+    },
 
 
     // ------------------------------------------------------------------------------------------
@@ -959,6 +967,142 @@
     {
       "RenameClassNameTo": "FriendSendJson",
       "HasFields": [ "RequestId", "RetryAfter", "Error" ]
+    },
+    {
+      "RenameClassNameTo": "TemplateTables",
+      "HasFields": [ "CustomizationTypeTable", "dictionary_0", "ItemConstructors", "TemplateTypeTable", "TypeTable" ]
+    },
+    {
+      "RenameClassNameTo": "CustomizationBase",
+      "HasFields": [ "Id", "Name", "Parent", "Side", "_type" ],
+      "ExactFields": [ "Id", "Name", "Parent", "Side", "_type" ]
+    },
+    {
+      "RenameClassNameTo": "CustomizationLowerFeet",
+      "HasFields": [ "Feet" ],
+      "HasMethods": [ "SetClothingsToProfile" ]
+    },
+    {
+      "RenameClassNameTo": "CustomizationUpper",
+      "HasFields": [ "Hands", "Body" ],
+      "HasMethods": [ "SetClothingsToProfile" ]
+    },
+    {
+      "RenameClassNameTo": "CustomizationVoice",
+      "HasFields": [ "Prefab" ],
+      "ExactFields": [ "Prefab" ]
+    },
+    {
+      "RenameClassNameTo": "BarterItemTemplate",
+      "HasFields": [ "MaxResource" ],
+      "ExactFields": [ "MaxResource" ]
+    },
+    {
+      "RenameClassNameTo": "Other",
+      "HasFields": [ "Dogtag" ],
+      "ExactFields": [ "Dogtag" ]
+    },
+    {
+      "RenameClassNameTo": "MobContainer",
+      "HasProperties": [ "isSecured", "sizeWidth", "sizeHeight", "ItemInteractionButtons" ]
+    },
+    {
+      "RenameClassNameTo": "CompoundItem",
+      "ClassName": "LootItemClass2"
+    },
+
+    // Long Item Renaming by GClass
+    {
+      "RenameClassNameTo": "Fuel",
+      "ClassName": "GClass2358"
+    },
+    {
+      "RenameClassNameTo": "FuelTemplate",
+      "ClassName": "GClass2181"
+    },
+    {
+      "RenameClassNameTo": "Battery",
+      "ClassName": "GClass2349"
+    },
+    {
+      "RenameClassNameTo": "BatteryTemplate",
+      "ClassName": "GClass2172"
+    },
+    {
+      "RenameClassNameTo": "BuildingMaterial",
+      "ClassName": "GClass2350"
+    },
+    {
+      "RenameClassNameTo": "Electronics",
+      "ClassName": "GClass2351"
+    },
+    {
+      "RenameClassNameTo": "HouseholdGoods",
+      "ClassName": "GClass2352"
+    },
+    {
+      "RenameClassNameTo": "Jewelry",
+      "ClassName": "GClass2353"
+    },
+    {
+      "RenameClassNameTo": "Lubricant",
+      "ClassName": "GClass2354"
+    },
+    {
+      "RenameClassNameTo": "MedicalSupplies",
+      "ClassName": "GClass2355"
+    },
+    {
+      "RenameClassNameTo": "Tool",
+      "ClassName": "GClass2356"
+    },
+    {
+      "RenameClassNameTo": "FunctionalMod",
+      "ClassName": "GClass2287"
+    },
+    {
+      "RenameClassNameTo": "Bipod",
+      "ClassName": "GClass2288"
+    },
+    {
+      "RenameClassNameTo": "Flashlight",
+      "ClassName": "GClass2289"
+    },
+    {
+      "RenameClassNameTo": "Foregrip",
+      "ClassName": "GClass2290"
+    },
+    {
+      "RenameClassNameTo": "Gasblock",
+      "ClassName": "GClass2291"
+    },
+    {
+      "RenameClassNameTo": "LightLaser",
+      "ClassName": "GClass2292"
+    },
+    {
+      "RenameClassNameTo": "Muzzle",
+      "ClassName": "GClass2295"
+    },
+    {
+      "RenameClassNameTo": "Compensator",
+      "ClassName": "GClass2296"
+    },
+    {
+      "RenameClassNameTo": "FlashHider",
+      "ClassName": "GClass2297"
+    },
+    {
+      "RenameClassNameTo": "MuzzleCombo",
+      "ClassName": "GClass2298"
+    },
+    {
+      "RenameClassNameTo": "Pms",
+      "ClassName": "GClass2299"
+    },
+    {
+      "RenameClassNameTo": "Silencer",
+      "ClassName": "GClass2300"
     }
   ],
   "DefinedTypesToForcePublic": [
@@ -976,5 +1120,5 @@
     //"TransportPrefix"
   ],
   "ForceAllToPublic": false,
-  "RenameEmptyToACS":  true
+  "RenameEmptyToACS": false
 }
