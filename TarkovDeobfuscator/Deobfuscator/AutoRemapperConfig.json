@@ -998,7 +998,7 @@
       "ExactFields": [ "MaxResource" ]
     },
     {
-      "RenameClassNameTo": "Other",
+      "RenameClassNameTo": "OtherDogtag",
       "HasFields": [ "Dogtag" ],
       "ExactFields": [ "Dogtag" ]
     },
@@ -1012,97 +1012,118 @@
     },
 
     // Long Item Renaming by GClass
+    //5d650c3e815116009f6201d2
     {
       "RenameClassNameTo": "Fuel",
-      "ClassName": "GClass2358"
+      "ClassName": "GClass2360"
     },
     {
       "RenameClassNameTo": "FuelTemplate",
-      "ClassName": "GClass2181"
+      "ClassName": "GClass2183"
     },
+    // 57864ee62459775490116fc1
     {
       "RenameClassNameTo": "Battery",
-      "ClassName": "GClass2349"
-    },
-    {
-      "RenameClassNameTo": "BatteryTemplate",
-      "ClassName": "GClass2172"
-    },
-    {
-      "RenameClassNameTo": "BuildingMaterial",
-      "ClassName": "GClass2350"
-    },
-    {
-      "RenameClassNameTo": "Electronics",
       "ClassName": "GClass2351"
     },
     {
-      "RenameClassNameTo": "HouseholdGoods",
+      "RenameClassNameTo": "BatteryTemplate",
+      "ClassName": "GClass2174"
+    },
+    // 57864ada245977548638de91
+    {
+      "RenameClassNameTo": "BuildingMaterial",
       "ClassName": "GClass2352"
     },
+    // 57864a66245977548f04a81f
     {
-      "RenameClassNameTo": "Jewelry",
+      "RenameClassNameTo": "Electronics",
       "ClassName": "GClass2353"
     },
+    // 57864c322459775490116fbf
     {
-      "RenameClassNameTo": "Lubricant",
+      "RenameClassNameTo": "HouseholdGoods",
       "ClassName": "GClass2354"
     },
+    // 57864a3d24597754843f8721
     {
-      "RenameClassNameTo": "MedicalSupplies",
+      "RenameClassNameTo": "Jewelry",
       "ClassName": "GClass2355"
     },
+    // 57864e4c24597754843f8723
     {
-      "RenameClassNameTo": "Tool",
+      "RenameClassNameTo": "Lubricant",
       "ClassName": "GClass2356"
     },
+    // 57864c8c245977548867e7f1
+    {
+      "RenameClassNameTo": "MedicalSupplies",
+      "ClassName": "GClass2357"
+    },
+    // 57864bb7245977548b3b66c2
+    {
+      "RenameClassNameTo": "Tool",
+      "ClassName": "GClass2358"
+    },
+    // 550aa4154bdc2dd8348b456b
     {
       "RenameClassNameTo": "FunctionalMod",
-      "ClassName": "GClass2287"
-    },
-    {
-      "RenameClassNameTo": "Bipod",
-      "ClassName": "GClass2288"
-    },
-    {
-      "RenameClassNameTo": "Flashlight",
       "ClassName": "GClass2289"
     },
+    // 55818afb4bdc2dde698b456d
     {
-      "RenameClassNameTo": "Foregrip",
+      "RenameClassNameTo": "Bipod",
       "ClassName": "GClass2290"
     },
+    // 55818b084bdc2d5b648b4571
     {
-      "RenameClassNameTo": "Gasblock",
+      "RenameClassNameTo": "Flashlight",
       "ClassName": "GClass2291"
     },
+    // 55818af64bdc2d5b648b4570
     {
-      "RenameClassNameTo": "LightLaser",
+      "RenameClassNameTo": "Foregrip",
       "ClassName": "GClass2292"
     },
+    // 56ea9461d2720b67698b456f
+    {
+      "RenameClassNameTo": "Gasblock",
+      "ClassName": "GClass2293"
+    },
+    // 55818b0e4bdc2dde698b456e
+    {
+      "RenameClassNameTo": "LightLaser",
+      "ClassName": "GClass2294"
+    },
+    // 5448fe394bdc2d0d028b456c
     {
       "RenameClassNameTo": "Muzzle",
-      "ClassName": "GClass2295"
-    },
-    {
-      "RenameClassNameTo": "Compensator",
-      "ClassName": "GClass2296"
-    },
-    {
-      "RenameClassNameTo": "FlashHider",
       "ClassName": "GClass2297"
     },
+    // 550aa4af4bdc2dd4348b456e
     {
-      "RenameClassNameTo": "MuzzleCombo",
+      "RenameClassNameTo": "Compensator",
       "ClassName": "GClass2298"
     },
+    // 550aa4bf4bdc2dd6348b456b
     {
-      "RenameClassNameTo": "Pms",
+      "RenameClassNameTo": "FlashHider",
       "ClassName": "GClass2299"
     },
+    // 550aa4dd4bdc2dc9348b4569
+    {
+      "RenameClassNameTo": "MuzzleCombo",
+      "ClassName": "GClass2300"
+    },
+    // 550ad14d4bdc2dd5348b456c
+    {
+      "RenameClassNameTo": "Pms",
+      "ClassName": "GClass2301"
+    },
+    // 550aa4cd4bdc2dd8348b456c
     {
       "RenameClassNameTo": "Silencer",
-      "ClassName": "GClass2300"
+      "ClassName": "GClass2302"
     }
   ],
   "DefinedTypesToForcePublic": [
