@@ -738,7 +738,14 @@
       "RenameClassNameTo": "JsonUtilityClass",
       "HasMethods": [ "ParseJsonTo", "PopulateJson", "ToJson", "ToPrettyJson", "ToUnparsedData" ]
     },
-
+    {
+      "RenameClassNameTo": "BotSettingsRepoClass",
+      "HasMethodsStatic": [ "CountAsBoss", "GetPhraseTagFromRole", "GetScavRoleKey", "IsBoss" ]
+    },
+    {
+      "RenameClassNameTo": "BotSettingsValuesClass",
+      "HasFields": [ "IsBoss", "IsFollower", "IsHostileToEverybody", "CountAsBoss", "ScavRoleKey", "PhraseTag" ]
+    },
 
     // ------------------------------------------------------------------------------------------
     // MTGA Remapping List
@@ -1010,7 +1017,7 @@
       "RenameClassNameTo": "CompoundItem",
       "ClassName": "LootItemClass2"
     },
-
+/*
     // Long Item Renaming by GClass
     //5d650c3e815116009f6201d2
     {
@@ -1125,20 +1132,21 @@
       "RenameClassNameTo": "Silencer",
       "ClassName": "GClass2302"
     }
+*/
   ],
   "DefinedTypesToForcePublic": [
-    //"BaseLocalGame",
-    //"TransportPrefix"
+    "BaseLocalGame",
+    "TransportPrefix"
   ],
   "TypesToForceAllPublicMethods": [
-    //"BaseLocalGame",
-    //"Player"
+    "BaseLocalGame",
+    "Player"
   ],
   "TypesToForceAllPublicFieldsAndProperties": [
-    //"BaseLocalGame"
+    "BaseLocalGame"
   ],
   "ForceTypeToPublic": [
-    //"TransportPrefix"
+    "TransportPrefix"
   ],
   "ForceAllToPublic": false,
   "RenameEmptyToACS": false
