@@ -538,6 +538,23 @@ namespace TarkovDeobfuscator
 
                         ).ToList();
 
+                    //Filter by BaseType
+                    if (!string.IsNullOrEmpty(config.BaseType))
+                    {
+                        foreach (var t in findTypes)
+                        {
+                            if (t.BaseType != null && t.BaseType.Name != "Object")
+                            {
+                                if (t.BaseType.Name.Contains(config.BaseType))
+                                {
+                                    typeDefinitions.Add(t);
+                                }
+                            }
+                        
+                        }
+                    }
+                    
+                    
                     // Filter with ExactProperties
                     if (config.ExactProperties != null && config.ExactProperties.Length != 0)
                     {
@@ -688,8 +705,12 @@ namespace TarkovDeobfuscator
                         }
                     }
 
+
                     if (typeDefinitions.Count() > 0)
                     { findTypes = typeDefinitions; }
+
+
+
                     
                     if (findTypes.Any())
                     {
@@ -787,8 +808,6 @@ namespace TarkovDeobfuscator
 
                 }
             }
-
-            
         }
 
         public static string[] SplitCamelCase(string input)

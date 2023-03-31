@@ -37,6 +37,7 @@
         public string[] ExactInterfaces { get; set; }
         public string[] HasNestedTypes { get; set; }
         public string[] ExactNestedTypes { get; set; }
+        public string BaseType { get; set; }
 
         public override string ToString()
         {

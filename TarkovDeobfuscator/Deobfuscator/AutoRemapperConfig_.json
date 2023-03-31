@@ -746,12 +746,6 @@
       "RenameClassNameTo": "BotSettingsValuesClass",
       "HasFields": [ "IsBoss", "IsFollower", "IsHostileToEverybody", "CountAsBoss", "ScavRoleKey", "PhraseTag" ]
     },
-    {
-      "RenameClassNameTo": "EasyBundle",
-      "HasFields": [ "DependencyKeys", "Assets", "SameNameAsset", "Progress", "LoadState" ],
-      "HasMethods": [ "Load", "Unload" ]
-    },
-
 
     // ------------------------------------------------------------------------------------------
     // MTGA Remapping List
@@ -971,8 +965,7 @@
     {
       "RenameClassNameTo": "ProfileInfoJson",
       "HasFields": [ "Nickname", "Side", "Level", "MemberCategory" ],
-      "ExactFields": [ "Nickname", "Side", "Level", "MemberCategory" ],
-      "HasMethods": [ "GetFromChatMemberInfo" ]
+      "ExactFields": [ "Nickname", "Side", "Level", "MemberCategory" ]
     },
     {
       "RenameClassNameTo": "FriendListJson",
@@ -1023,11 +1016,6 @@
     {
       "RenameClassNameTo": "CompoundItem",
       "ClassName": "LootItemClass2"
-    },
-    {
-      "RenameClassNameTo": "BindableState",
-      "BaseType": "BindableClass",
-      "HasMethods": []
     },
 /*
     // Long Item Renaming by GClass
