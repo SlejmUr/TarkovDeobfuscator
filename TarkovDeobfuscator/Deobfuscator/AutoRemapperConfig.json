@@ -1029,7 +1029,17 @@
       "BaseType": "BindableClass",
       "HasMethods": []
     },
-/*
+    {
+      "RenameClassNameTo": "MagazineTemplate",
+      "HasFields": [ "LoadUnloadModifier" ],
+      "HasMethods": [ "OnInit" ]
+    },
+    {
+      "RenameClassNameTo": "RaidController",
+      "ClassName": "EFT.UI.Matchmaker.MatchmakerOfflineRaidScreen",
+      "IsNested": true
+    }
+    /*
     // Long Item Renaming by GClass
     //5d650c3e815116009f6201d2
     {

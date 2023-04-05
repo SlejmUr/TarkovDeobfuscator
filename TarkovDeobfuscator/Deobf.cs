@@ -441,7 +441,7 @@ namespace TarkovDeobfuscator
 
             int countOfDefinedMappingSucceeded = 0;
             int countOfDefinedMappingFailed = 0;
-
+            bool x = false;
             foreach (var config in autoRemapperConfig.DefinedRemapping.Where(x => !string.IsNullOrEmpty(x.RenameClassNameTo)))
             {
 
@@ -450,6 +450,32 @@ namespace TarkovDeobfuscator
                     List<TypeDefinition> typeDefinitions = new();
                     var findTypes
                         = oldAssembly.MainModule.GetTypes().ToList();
+                    /*
+                    if (!x)
+                    {
+                        foreach (var typeDefinition in findTypes)
+                        {
+                            if (typeDefinition.FullName.Contains("MatchmakerOfflineRaidScreen"))
+                            {
+                                Console.WriteLine(typeDefinition.IsNested);
+                                Console.WriteLine(typeDefinition.Name);
+                                Console.WriteLine(typeDefinition.FullName);
+                                var nest = typeDefinition.NestedTypes.ToList();
+                                Console.WriteLine(nest.Count);
+                                foreach (var item in nest)
+                                {
+                                    Console.WriteLine(typeDefinition.IsNested);
+                                    Console.WriteLine(item.Name);
+                                    Console.WriteLine(item.FullName);
+                                }
+                                Console.WriteLine();
+                            }
+
+                        }
+                        x = true;
+                    }
+                    */
+
                     // Filter Types by Class Name Matching
                     findTypes = findTypes.Where(
                         x =>
@@ -511,6 +537,14 @@ namespace TarkovDeobfuscator
                                 (!config.IsClass.HasValue     || (config.IsClass.HasValue     && config.IsClass.Value     && (x.IsClass && !x.IsEnum && !x.IsInterface)))
                                 && 
                                 (!config.IsInterface.HasValue || (config.IsInterface.HasValue && config.IsInterface.Value && (x.IsInterface && !x.IsEnum && !x.IsClass)))
+                            )
+                        ).ToList();
+
+                    //Filter by IsNested
+                    findTypes = findTypes.Where(
+                        x =>
+                            (
+                                !config.IsNested.HasValue || (config.IsNested.HasValue && config.IsNested.Value && x.IsNested)
                             )
                         ).ToList();
 

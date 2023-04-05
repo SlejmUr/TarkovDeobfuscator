@@ -37,8 +37,8 @@
         public string[] ExactInterfaces { get; set; }
         public string[] HasNestedTypes { get; set; }
         public string[] ExactNestedTypes { get; set; }
-        public string BaseType { get; set; }
-
+        public string? BaseType { get; set; }
+        public bool? IsNested { get; set; }
         public override string ToString()
         {
             return !string.IsNullOrEmpty(RenameClassNameTo) ? RenameClassNameTo : base.ToString();
