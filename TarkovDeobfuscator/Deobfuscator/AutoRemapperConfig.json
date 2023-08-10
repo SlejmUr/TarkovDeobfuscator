@@ -126,6 +126,11 @@
       "IsClass": true,
       "HasEvents": [ "OnSkillLevelChanged", "WeaponMastered", "OnSkillExperienceChanged", "OnMasteringExperienceChanged", "NewWeaponMastered" ]
     },
+    //"GClass1572": "PoolManager",
+    {
+      "RenameClassNameTo": "PoolManager",
+      "HasMethods": [ "LoadBundlesAndCreatePools" ]
+    },
     //"GClass1595": "MainMenuController",
     {
       "RenameClassNameTo": "MainMenuController",
@@ -290,9 +295,9 @@
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4" ],
       "HasMethods": [ "ShortName" ]
     },
-    //"GClass2119": "Magazine",
+    //"GClass2119": "MagazineClass",
     {
-      "RenameClassNameTo": "Magazine",
+      "RenameClassNameTo": "MagazineClass",
       "IsClass": true,
       "HasFields": [ "Tag" ],
       "HasMethods": [ "GetMaxVisibleAmmo", "CheckCompatibility", "GetAmmoCountByLevel" ]
@@ -304,7 +309,7 @@
       "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9" ],
       "HasMethods": [ "ShortName" ]
     },
-    //"GClass2152": "EquipmentClass", Inventory from Items.json
+    //"GClass2152": "EquipmentClass",
     {
       "RenameClassNameTo": "EquipmentClass",
       "IsClass": true,
@@ -448,15 +453,18 @@
     },
     //"GClass474": "BotsGroupClass",
     {
-      "RenameClassNameTo": "BotsGroupClass",
+      "RenameClassNameTo": "BotsGroup",
       "HasEvents": [ "OnAddGroup" ],
       "HasMethods": [ "TryGetValue", "Add", "AddNoKey" ]
     },
-    //"GClass477": "BotGroupClass",
-    {
-      "RenameClassNameTo": "BotGroupClass",
-      "HasMethods": [ "IsPlayerEnemy", "IsPlayerEnemyByRole", "AddEnemyGroup", "AddEnemyGroupIfAllowed" ]
-    },
+        //"GClass477": "BotGroupClass",
+        {
+            "RenameClassNameTo": "BotGroupClass",
+            "HasMethods": [ "PrepareToLoadBackend", "ChooseProfile" ],
+            "HasFields": [ "botDifficulty_0", "nullable_0", "wildSpawnType_0" ],
+	"HasProperties": ["Side"],
+"ExactProperties": ["Side"]
+        },
     //"GClass484": "BotSettingsClass",
     {
       "RenameClassNameTo": "BotSettingsClass",
@@ -474,11 +482,10 @@
       "HasFields": [ "HostileScavs" ],
       "HasMethods": [ "KillEnemy", "MarkAsAggressor", "WasAttackedBy", "MarkAsCanBeFreeKilled" ]
     },
-    //"GClass515": "AiTaskManagerClass",
+    //"GClass515": "TaskManagerClass",
     {
-      "RenameClassNameTo": "AiTaskManagerClass",
-      "HasFields": [ "MaxTaskPerFrame" ],
-      "HasMethods": [ "AddTask", "CountTasks", "TaskWaitTooLong" ]
+      "RenameClassNameTo": "TaskManagerClass",
+      "HasMethods": [ "AddTask" ]
     },
     //"GClass523": "ScatteringSettingsClass",
     {
@@ -521,17 +528,6 @@
       "HasFields": [ "_startTime", "float_0" ],
       "HasMethods": [ "Start", "Stop", "SetPause" ]
     },
-    //"GClass879": "Mesh",
-    {
-      "RenameClassNameTo": "Mesh",
-      "HasFields": [ "Triangles", "Normals", "UV", "IsSkinned", "BindPoses", "BoneWeights", "Bones", "DecalTransform", "WorldVertices", "WorldNormals" ],
-      "HasMethods": []
-    },
-    //"GClass887": "ChatServers",
-    {
-      "RenameClassNameTo": "ChatServers",
-      "HasFields": [ "ServerId", "RegistrationId", "VersionId", "Ip", "Port", "DateTime", "Chats", "Regions" ]
-    },
     //"GInterface120": "ISession",
     {
       "RenameClassNameTo": "ISession",
@@ -560,36 +556,11 @@
       "HasFields": [ "Side", "SpawnParams" ],
       "HasMethods": [ "IsValidSpawnType", "GetDebugLocalName", "GetDebugData", "ShallChooseByData", "IsBossOrFollowerByTime", "IsZeroWave", "IsBossOrFollower", "IsSpawnOnStart", "CanAtZoneByType" ]
     },
-    //"GInterface153": "IAirdropLogicClass",
-    {
-      "RenameClassNameTo": "IAirdropLogicClass",
-      "IsInterface": true,
-      "HasMethods": [ "SetSyncObject", "Init", "InitStaticObject", "ManualUpdate", "UpdateSyncObjectData", "TakeFromPool", "ReturnToPool", "CollisionEnter" ]
-    },
     //"GInterface159": "IEffect",
     {
       "RenameClassNameTo": "IEffect",
       "IsInterface": true,
       "HasMethods": [ "AddWholeTime", "Propagate" ]
-    },
-    //"GInterface201": "IHealthController",
-    {
-      "RenameClassNameTo": "IHealthController",
-      "IsInterface": true,
-      "HasFields": [ "FallSafeHeight", "IsAlive", "HealthRate", "EnergyRate", "HydrationRate", "TemperatureRate", "DamageCoeff", "UpdateTime", "Player", "CarryingWeightAbsoluteModifier", "CarryingWeightRelativeModifier" ],
-      "HasMethods": [ "GetBodyPartsInCriticalCondition", "SetEncumbered", "SetOverEncumbered", "AddFatigue", "AddImmunityNotificationEffect", "CancelApplyingItem", "ManualUpdate", "PropagateAllEffects" ]
-    },
-    //"GInterface253": "IZones",
-    {
-      "RenameClassNameTo": "IZones",
-      "IsInterface": true,
-      "HasMethods": [ "ZoneNames", "ZoneSpawnPoints", "AllZonesSpawnPoints", "GetBossPosition" ]
-    },
-    //"GInterface255": "ISpawnPoints",
-    {
-      "RenameClassNameTo": "ISpawnPoints",
-      "IsInterface": true,
-      "HasMethods": [ "CreateSpawnPoint", "DestroySpawnPoint" ]
     },
     //"GInterface256": "ISpawnSystem",
     {
@@ -621,20 +592,13 @@
     {
       "RenameClassNameTo": "IAIDetails",
       "IsInterface": true,
-      "HasFields": [ "Id", "Side", "GroupId", "LookDirection", "Position", "Transform", "WeaponRoot", "HealthController", "Profile", "GetPlayer", "AIData", "Loyalty", "IsAI", "MainParts", "ProfileId" ]
+      "HasFields": [ "AIData", "iPlayer", "IsAI", "Nickname" ]
     },
     //"GStruct109": "WeatherSettings",
     {
       "RenameClassNameTo": "WeatherSettings",
       "IsStruct": true,
       "HasFields": [ "IsRandomTime", "IsRandomWeather" ]
-    },
-    //"GStruct268": "DamageInfo",
-    {
-      "RenameClassNameTo": "DamageInfo",
-      "IsStruct": true,
-      "HasFields": [ "DamageType", "Damage", "PenetrationPower", "HitPoint", "ArmorDamage" ],
-      "HasMethods": [ "GetOverDamage" ]
     },
     //"GStruct39": "AirplaneDataPacketStruct"
     {
@@ -648,19 +612,10 @@
     // ------------------------------------------------------------------------------------------
     // SIT Remapping List
     {
-      "RenameClassNameTo": "PoolManager",
-      "HasFields": [],
-      "HasMethods": [ "LoadBundlesAndCreatePools" ]
-    },
-    {
       "RenameClassNameTo": "IProgress",
       "IsInterface": true,
       "HasFields": [ "Progress", "Key", "LoadState", "DependencyKeys" ],
       "HasMethods": [ "Load", "Unload" ]
-    },
-    {
-      "RenameClassNameTo": "RagfairInfo",
-      "HasFields": [ "Offers", "Rating", "IsRatingGrowing" ]
     },
     {
       "RenameClassNameTo": "SProgress",
@@ -751,7 +706,6 @@
       "HasFields": [ "DependencyKeys", "Assets", "SameNameAsset", "Progress", "LoadState" ],
       "HasMethods": [ "Load", "Unload" ]
     },
-
 
     // ------------------------------------------------------------------------------------------
     // MTGA Remapping List
@@ -971,8 +925,7 @@
     {
       "RenameClassNameTo": "ProfileInfoJson",
       "HasFields": [ "Nickname", "Side", "Level", "MemberCategory" ],
-      "ExactFields": [ "Nickname", "Side", "Level", "MemberCategory" ],
-      "HasMethods": [ "GetFromChatMemberInfo" ]
+      "ExactFields": [ "Nickname", "Side", "Level", "MemberCategory" ]
     },
     {
       "RenameClassNameTo": "FriendListJson",
@@ -1039,122 +992,6 @@
       "ClassName": "EFT.UI.Matchmaker.MatchmakerOfflineRaidScreen",
       "IsNested": true
     }
-    /*
-    // Long Item Renaming by GClass
-    //5d650c3e815116009f6201d2
-    {
-      "RenameClassNameTo": "Fuel",
-      "ClassName": "GClass2360"
-    },
-    {
-      "RenameClassNameTo": "FuelTemplate",
-      "ClassName": "GClass2183"
-    },
-    // 57864ee62459775490116fc1
-    {
-      "RenameClassNameTo": "Battery",
-      "ClassName": "GClass2351"
-    },
-    {
-      "RenameClassNameTo": "BatteryTemplate",
-      "ClassName": "GClass2174"
-    },
-    // 57864ada245977548638de91
-    {
-      "RenameClassNameTo": "BuildingMaterial",
-      "ClassName": "GClass2352"
-    },
-    // 57864a66245977548f04a81f
-    {
-      "RenameClassNameTo": "Electronics",
-      "ClassName": "GClass2353"
-    },
-    // 57864c322459775490116fbf
-    {
-      "RenameClassNameTo": "HouseholdGoods",
-      "ClassName": "GClass2354"
-    },
-    // 57864a3d24597754843f8721
-    {
-      "RenameClassNameTo": "Jewelry",
-      "ClassName": "GClass2355"
-    },
-    // 57864e4c24597754843f8723
-    {
-      "RenameClassNameTo": "Lubricant",
-      "ClassName": "GClass2356"
-    },
-    // 57864c8c245977548867e7f1
-    {
-      "RenameClassNameTo": "MedicalSupplies",
-      "ClassName": "GClass2357"
-    },
-    // 57864bb7245977548b3b66c2
-    {
-      "RenameClassNameTo": "Tool",
-      "ClassName": "GClass2358"
-    },
-    // 550aa4154bdc2dd8348b456b
-    {
-      "RenameClassNameTo": "FunctionalMod",
-      "ClassName": "GClass2289"
-    },
-    // 55818afb4bdc2dde698b456d
-    {
-      "RenameClassNameTo": "Bipod",
-      "ClassName": "GClass2290"
-    },
-    // 55818b084bdc2d5b648b4571
-    {
-      "RenameClassNameTo": "Flashlight",
-      "ClassName": "GClass2291"
-    },
-    // 55818af64bdc2d5b648b4570
-    {
-      "RenameClassNameTo": "Foregrip",
-      "ClassName": "GClass2292"
-    },
-    // 56ea9461d2720b67698b456f
-    {
-      "RenameClassNameTo": "Gasblock",
-      "ClassName": "GClass2293"
-    },
-    // 55818b0e4bdc2dde698b456e
-    {
-      "RenameClassNameTo": "LightLaser",
-      "ClassName": "GClass2294"
-    },
-    // 5448fe394bdc2d0d028b456c
-    {
-      "RenameClassNameTo": "Muzzle",
-      "ClassName": "GClass2297"
-    },
-    // 550aa4af4bdc2dd4348b456e
-    {
-      "RenameClassNameTo": "Compensator",
-      "ClassName": "GClass2298"
-    },
-    // 550aa4bf4bdc2dd6348b456b
-    {
-      "RenameClassNameTo": "FlashHider",
-      "ClassName": "GClass2299"
-    },
-    // 550aa4dd4bdc2dc9348b4569
-    {
-      "RenameClassNameTo": "MuzzleCombo",
-      "ClassName": "GClass2300"
-    },
-    // 550ad14d4bdc2dd5348b456c
-    {
-      "RenameClassNameTo": "Pms",
-      "ClassName": "GClass2301"
-    },
-    // 550aa4cd4bdc2dd8348b456c
-    {
-      "RenameClassNameTo": "Silencer",
-      "ClassName": "GClass2302"
-    }
-*/
   ],
   "DefinedTypesToForcePublic": [
     "BaseLocalGame",
