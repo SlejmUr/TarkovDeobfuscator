@@ -454,8 +454,8 @@
     //"GClass474": "BotsGroupClass",
     {
       "RenameClassNameTo": "BotsGroup",
-      "HasEvents": [ "OnAddGroup" ],
-      "HasMethods": [ "TryGetValue", "Add", "AddNoKey" ]
+      "HasMethods": [ "IsEnemy", "AddEnemy", "ContainsEnemy" ],
+      "HasFields": [ "Enemies" ],
     },
         //"GClass477": "BotGroupClass",
         {
