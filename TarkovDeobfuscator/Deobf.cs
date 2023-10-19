@@ -148,10 +148,7 @@ namespace TarkovDeobfuscator
                     && x.Parameters.Any(p =>
                     p.ParameterType.Name.StartsWith("GClass")
                     || p.ParameterType.Name.StartsWith("GStruct")
-                    || p.ParameterType.Name.StartsWith("GInterface")
-                    //|| p.ParameterType.Name.StartsWith("Class")
-
-                    )))
+                    || p.ParameterType.Name.StartsWith("GInterface"))))
                 {
                     // --------------------------------------------------------
                     // Renaming by the classes being used as Parameters in methods
@@ -170,7 +167,10 @@ namespace TarkovDeobfuscator
                             .Replace(" ", "")
                             + "." + p.Name;
                         if (!gclassToNameCounts.ContainsKey(n))
+                        {
                             gclassToNameCounts.Add(n, 0);
+
+                        }
 
                         gclassToNameCounts[n]++;
                     }
@@ -501,6 +501,14 @@ namespace TarkovDeobfuscator
                                     )
                                ).ToList();
                     }
+
+                    // Filter Types by Static Methods
+                    findTypes = findTypes.Where(x
+                            =>
+                                (config.HasMethodsStatic == null || config.HasMethodsStatic.Length == 0
+                                    || (x.Methods.Where(x => x.IsStatic).Select(y => y.Name.Split('.')[y.Name.Split('.').Length - 1]).Count(y => config.HasMethodsStatic.Contains(y)) >= config.HasMethodsStatic.Length))
+
+                            ).ToList();
 
                     // Filter Types by Events
                     findTypes = findTypes.Where(x
