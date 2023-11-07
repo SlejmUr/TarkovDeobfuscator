@@ -12,6 +12,7 @@
     <None Remove="Deobfuscator\AutoRemapperConfig.json" />
     <None Remove="Deobfuscator\AutoRemapperConfig_mtc.json" />
     <None Remove="Deobfuscator\AutoRemapperConfig_sit.json" />
+    <None Remove="Deobfuscator\biglist.json" />
     <None Remove="Deobfuscator\de4dot.blocks.dll" />
     <None Remove="Deobfuscator\de4dot.code.dll" />
     <None Remove="Deobfuscator\de4dot.cui.dll" />
@@ -31,6 +32,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Deobfuscator\AutoRemapperConfig_sit.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Deobfuscator\biglist.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Deobfuscator\de4dot.blocks.dll">

@@ -1,6 +1,8 @@
 ﻿using Mono.Cecil;
 using Mono.Cecil.Cil;
+using Mono.Cecil.Rocks;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -556,6 +558,14 @@ namespace TarkovDeobfuscator
                             )
                         ).ToList();
 
+                    //Filter by IsAbstract
+                    findTypes = findTypes.Where(
+                        x =>
+                            (
+                                !config.IsAbstract.HasValue || (config.IsAbstract.HasValue && config.IsAbstract.Value && x.IsAbstract)
+                            )
+                        ).ToList();
+
                     // Filter by Interfaces
                     findTypes = findTypes.Where(x
                         =>
@@ -848,6 +858,104 @@ namespace TarkovDeobfuscator
                         tn.Namespace = "ACS";
                     }
 
+                }
+            }
+            RemapperVoid(oldAssembly);
+        }
+
+
+        static void RemapperVoid(AssemblyDefinition oldAssembly)
+        {
+            var TypeDefs = oldAssembly.MainModule.GetTypes().ToList();
+            if (TypeDefs == null)
+                return;
+            var brains = TypeDefs.Where(t=> !t.IsAbstract && t.BaseType != null && t.BaseType.Name != "Object" && t.BaseType.Name == "BaseBrain").ToList();
+            if (brains.Count != 0)
+            {
+                foreach (var brain in brains)
+                {
+                    var method = brain.Methods.Where(y => y.Name == "ShortName").FirstOrDefault();
+                    if (method != null)
+                    {
+                        var name = method.Body.Instructions[0];
+                        Console.WriteLine(brain.Name + " remapped to " + name.Operand.ToString().Replace(" ", "") + "BotBrain");
+                        brain.Name = name.Operand.ToString().Replace(" ", "") + "BotBrain";
+                    }
+                }
+            }
+
+            var biglist = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText("Deobfuscator/biglist.json"));
+
+           
+            var TemplateTable = TypeDefs.Where(t => t.Name == "TemplateTables").FirstOrDefault();
+            if (TemplateTable != null)
+            {
+                bool IsTemplates = false;
+                bool Customization = false;
+                var cctor = TemplateTable.Methods.Where(t => t.Name == ".cctor").FirstOrDefault();
+                if (cctor == null)
+                    return;
+
+                foreach (var instruction in cctor.Body.Instructions)
+                {
+
+                    if (instruction.OpCode.Code == Code.Ldstr)
+                    {
+                        string Id = (string)instruction.Operand;
+                        
+                        string tpye_from_list = "";
+                        if (biglist.ContainsKey(Id))
+                        {
+                            tpye_from_list = biglist[Id];
+                        }
+                        else
+                        {
+                            Console.WriteLine("ERROR, no ID: " + Id);
+                            continue;
+                        }
+
+                        var next = instruction.Next;
+                        if (next.OpCode.Code == Code.Ldtoken)
+                        {
+                            Console.WriteLine("ID: " + Id);
+                            object typ = next.Operand;
+                            string type_thing = typ.ToString();
+                            
+                            if (type_thing.Contains("."))
+                            {
+                                var t = type_thing.Split(".");
+                                type_thing = t.Last();
+                            }
+                            Console.WriteLine("OldType: " + type_thing);
+                            if (type_thing.Contains("Template") && !IsTemplates)
+                            {
+                                IsTemplates = true;
+                                Customization = false;
+                            }
+                               
+
+                            if (IsTemplates)
+                                tpye_from_list = tpye_from_list + "Template";
+
+                            if (type_thing.Contains("Customization"))
+                            {
+                                Customization = true;
+                                continue;
+                            }
+
+                            if (Customization)
+                                tpye_from_list =  "Customization" + tpye_from_list;
+
+                            Console.WriteLine("NewType: " + tpye_from_list);
+
+                            var renameType = TypeDefs.Where(t => t.Name.Contains(type_thing)).FirstOrDefault();
+                            if (renameType != null)
+                            {
+                                renameType.Name = tpye_from_list;
+                            }
+                            Console.WriteLine("--------------------------");
+                        }
+                    }
                 }
             }
         }

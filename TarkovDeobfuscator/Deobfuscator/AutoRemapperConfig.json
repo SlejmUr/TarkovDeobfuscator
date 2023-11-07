@@ -7,7 +7,7 @@
     // ------------------------------------------------------------------------------------------
     // SPT-Aki Remapping List
     {
-      "RenameClassNameTo": "BattleeyePatchClass",
+      "RenameClassNameTo": "BattlEyeClientRequest",
       "HasMethods": [ "RunValidation" ]
     },
     //    "Class220": "DataHandler",
@@ -18,53 +18,9 @@
     },
     //"Class708": "SslCertPatchClass",
     {
-      "RenameClassNameTo": "SslCertPatchClass",
+      "RenameClassNameTo": "SslCertValidator",
       "HasFields": [ "string_0" ],
       "HasMethods": [ "ValidateCertificate" ]
-    },
-    //"EFT.Bots.BotControllerSettings": "BotsSettings",
-    {
-      "RenameClassNameTo": "BotsSettings",
-      "ClassName": "BotControllerSettings"
-    },
-    //"EFT.WavesSettings": "WavesSettings",
-    {
-      "RenameClassNameTo": "WavesSettings",
-      "ClassName": "WavesSettings"
-    },
-    //"GClass1079": "GameServerClass",
-    {
-      "RenameClassNameTo": "GameServerClass",
-      "IsClass": true,
-      "HasExactFields": true,
-      "HasFields": [ "Ping" ]
-    },
-    //"GClass1087": "QuestItemClass",
-    {
-      "RenameClassNameTo": "QuestItemClass",
-      "HasExactFields": true,
-      "HasFields": [ "_id", "_tpl", "parentId" ]
-    },
-    //"GClass1092": "InsuredItemClass",
-    {
-      "RenameClassNameTo": "InsuredItemClass",
-      "HasExactFields": true,
-      "HasFields": [ "tid", "itemId" ]
-    },
-    //"GClass1111": "LocationSettingsClass",
-    {
-      "RenameClassNameTo": "LocationSettingsClass",
-      "HasFields": [ "locations", "paths" ]
-    },
-    //"GClass1126": "BackendConfigClass",
-    {
-      "RenameClassNameTo": "BackendConfigClass",
-      "HasFields": [ "Config", "ItemPresets", "BotPresets", "BotWeaponScatterings" ]
-    },
-    //"GClass1128": "BotPresetClass",
-    {
-      "RenameClassNameTo": "BotPresetClass",
-      "HasFields": [ "BotDifficulty", "Role", "UseThis", "VisibleAngle" ]
     },
     //"GClass1154": "BotMemoryClass",
     {
@@ -73,63 +29,8 @@
     },
     //"GClass1236": "LocalizationClass",
     {
-      "RenameClassNameTo": "LocalizationClass",
+      "RenameClassNameTo": "MenuLocalizator",
       "HasMethods": [ "ConvertToLocale" ]
-    },
-    //"GClass1301": "BotControllerClass",
-    {
-      "RenameClassNameTo": "BotControllerClass",
-      "HasMethods": [ "ActivateBotsByWave", "ActivateBotsWithoutWave", "AddEnemyToAllGroups" ]
-    },
-    //"GClass1305": "WaveInfo",
-    {
-      "RenameClassNameTo": "WaveInfo",
-      "HasFields": [ "Role", "Limit", "Difficulty" ]
-    },
-    //"GClass1310": "BotSpawnerClass",
-    {
-      "RenameClassNameTo": "BotSpawnerClass",
-      "HasFields": [ "BotGame", "Groups", "PlayersCount" ],
-      "HasMethods": [ "GetPlayer", "GetRandomBotZone" ]
-    },
-    //"GClass1313": "GameTimeClass",
-    {
-      "RenameClassNameTo": "GameTimeClass",
-      "HasMethods": [ "Calculate", "CalculateTaxonomyDate", "Reset" ]
-    },
-    //"GClass1315": "GameTimerClass",
-    {
-      "RenameClassNameTo": "GameTimerClass",
-      "HasMethods": [ "Start", "Stop", "ChangeSessionTime" ]
-    },
-    //"GClass1319": "ItemFactory",
-    {
-      "RenameClassNameTo": "ItemFactory",
-      "HasMethods": [ "CreateItem", "CreateFakeStash" ]
-    },
-    //"GClass1520": "ProfileStatusClass",
-    {
-      "RenameClassNameTo": "ProfileStatusClass",
-      "HasMethods": [ "IsAppropriateStatusChange" ]
-    },
-    //"Attribute0": "ProfileCustomizationClass",
-    //"GClass1534": "InfoClass",
-    {
-      "RenameClassNameTo": "InfoClass",
-      "HasEvents": [ "OnBanChanged", "OnExperienceChanged", "OnLevelChanged" ],
-      "HasMethods": [ "GetLevel", "GetExperience", "GetBan" ],
-      "HasFields": [ "RegistrationDate", "Nickname", "MemberCategory", "SavageLockTime" ]
-    },
-    //"GClass1545": "SkillsClass",
-    {
-      "RenameClassNameTo": "SkillsClass",
-      "IsClass": true,
-      "HasEvents": [ "OnSkillLevelChanged", "WeaponMastered", "OnSkillExperienceChanged", "OnMasteringExperienceChanged", "NewWeaponMastered" ]
-    },
-    //"GClass1572": "PoolManager",
-    {
-      "RenameClassNameTo": "PoolManager",
-      "HasMethods": [ "LoadBundlesAndCreatePools" ]
     },
     //"GClass1595": "MainMenuController",
     {
@@ -137,244 +38,33 @@
       "HasFields": [ "HealthController", "InventoryController", "MatchingType", "IsInSession" ],
       "HasMethods": [ "StopAfkMonitor", "OnProfileChangeApplied", "StoreProfile" ]
     },
-    //"GClass1706": "NotificationClass",
-    {
-      "RenameClassNameTo": "NotificationClass",
-      "HasFields": [ "ShowNotification", "Icon" ]
-    },
-    //"GClass1771": "NotificationManagerClass",
-    {
-      "RenameClassNameTo": "NotificationManagerClass",
-      "HasFields": [ "ProfileChangeNotifications", "Notifications" ]
-    },
-    //"GClass1784": "TraderClass",
-    {
-      "RenameClassNameTo": "TraderClass",
-      "HasFields": [ "LoyaltyLevel", "Standing", "MaxLoyaltyLevel", "AssortmentUpdateTimeout", "CurrentAssortment" ]
-    },
-    //"GClass1787": "WeatherClass",
-    {
-      "RenameClassNameTo": "WeatherClass",
-      "HasMethods": [ "GetWeatherTypeByNode" ]
-    },
-    //"GClass1810": "ClientMetrics",
-    {
-      "RenameClassNameTo": "ClientMetrics",
-      "HasFields": [ "RenderBinMetricCollector", "GameUpdateBinMetricCollector" ]
-    },
-    //"GClass1816": "MetricsClass",
-    {
-      "RenameClassNameTo": "MetricsClass",
-      "HasFields": [ "Settings", "SharedSettings", "HardwareDescription" ]
-    },
-    //"GClass1817": "MetricsConfigClass",
-    {
-      "RenameClassNameTo": "MetricsConfigClass",
-      "HasFields": [ "Keys", "NetProcessingBins", "RenderBins", "GameUpdateBins", "MemoryMeasureInterval" ]
-    },
-    //"GClass1821": "SynchronizableObjectLogicProcessorClass",
-    {
-      "RenameClassNameTo": "SynchronizableObjectLogicProcessorClass",
-      "HasMethods": [ "GetSyncObjectStrategyByType", "GetSynchronizableObjects" ]
-    },
-    //"GClass1822": "AirdropManagerAbstractClass",
-    {
-      "RenameClassNameTo": "AirdropManagerAbstractClass",
-      "HasMethods": [ "TakeAirdropPoint" ]
-    },
     //"GClass1823": "AirdropManagerClass",
     {
-      "RenameClassNameTo": "AirdropManagerClass",
+      "RenameClassNameTo": "AirdropManager",
       "IsClass": true,
-      "HasMethods": [ "ManualUpdate", "Init", "AddProjectile", "OnFlareSuccessEvent" ]
+      "HasMethods": [ "ManualUpdate", "Init", "AddProjectile", "OnFlareSuccessEvent" ],
+      "HasField": [ "int_0" ]
     },
     //"GClass1826": "AirdropLogicClass",
     {
-      "RenameClassNameTo": "AirdropLogicClass",
+      "RenameClassNameTo": "AirdropLogic",
       "HasFields": [],
       "HasMethods": [ "Init", "InitStaticObject", "SetSyncObject", "ManualUpdate", "UpdateSyncObjectData", "TakeFromPool", "ReturnToPool" ]
     },
-    //"GClass1850": "QuestDataClass",
-    {
-      "RenameClassNameTo": "QuestDataClass",
-      "IsClass": true,
-      "HasFields": [ "Id", "StartTime", "StatusStartTimestamps", "CompletedConditions", "Template" ],
-      "HasMethods": []
-    },
-    //"GClass1851": "QuestClass",
-    {
-      "RenameClassNameTo": "QuestClass",
-      "IsClass": true,
-      "HasFields": [ "ConditionCounters", "CompletedConditions", "StatusStartTimestamps" ],
-      "HasEvents": [ "OnStatusChanged", "OnConditionChanged" ],
-      "HasMethods": [ "IsConditionDone", "CheckForStatusChange", "SetStatus", "TransitionStatus", "DisconnectConditions" ]
-    },
-    //"GClass1853": "QuestControllerClass",
-    {
-      "RenameClassNameTo": "QuestControllerClass",
-      "IsClass": true,
-      "HasEvents": [ "OnNewQuestsAdded", "OnQuestStatusChanged", "OnTraderAssortmentChanged" ]
-    },
-    //"GClass1858": "RawQuestClass",
-    {
-      "RenameClassNameTo": "RawQuestClass",
-      "IsClass": true,
-      "HasFields": [ "LocationId", "Restartable", "QuestType", "KeyQuest", "CanShowNotificationsInGame" ],
-      "HasMethods": [ "CreateNewQuest", "GetConditions" ]
-    },
-    //"GClass1863": "DailyQuestClass",
-    {
-      "RenameClassNameTo": "DailyQuestClass",
-      "IsClass": true,
-      "HasFields": [ "Id", "Name", "UnavailableTime", "ExpirationTime", "Quests", "QuestChangeRequirement", "InactiveQuests" ]
-    },
-    //"GClass1866": "SessionCountersClass",
-    {
-      "RenameClassNameTo": "SessionCounterClass",
-      "IsClass": true,
-      "HasFields": [],
-      "HasEvents": [ "OnCounterChanged" ],
-      "HasMethods": [ "SetLong", "AddLong", "MinLong", "MaxFloat" ]
-    },
-    //"GClass1942": "TreatmentDataClass",
-    {
-      "RenameClassNameTo": "TreatmentDataClass",
-      "IsClass": true,
-      "HasFields": [ "Energy", "Hydration", "BodyParts" ],
-      "HasEvents": [],
-      "HasMethods": []
-    },
-    //"GClass197": "Equipment",
-    {
-      "RenameClassNameTo": "Equipment",
-      "IsClass": true,
-      "HasFields": [ "AllSlotNames" ],
-      "HasEvents": [],
-      "HasMethods": [ "GetSlot", "GetContainerSlots" ]
-    },
-    //"GClass203": "BotBaseBrainClass",
-    {
-      "RenameClassNameTo": "BotBaseBrainClass",
-      "IsClass": true,
-      "HasMethods": [ "FindPoint", "ActivateDebug", "CalcActionNextFrame" ]
-    },
-    //"GClass204": "BossBullyBrainClass",
-    {
-      "RenameClassNameTo": "BossBullyBrainClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6" ],
-      "HasEvents": [],
-      "HasMethods": [ "ShortName" ]
-    },
-    //"GClass205": "BossKillaBrainClass",
-    {
-      "RenameClassNameTo": "BossSanitarClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9" ],
-      "HasEvents": [],
-      "HasMethods": [ "ForceRecalcShootPos", "ShortName" ]
-    },
-    //"GClass206": "BossTagillaBrainClass",
-    {
-      "RenameClassNameTo": "BossTagillaBrainClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8" ],
-      "HasEvents": [],
-      "HasMethods": [ "ShortName" ]
-    },
-    //"GClass2082": "LootItemClass",
-    {
-      "RenameClassNameTo": "LootItemClass",
-      "IsClass": true,
-      "HasFields": [ "Grids", "Slots" ]
-    },
-    //"GClass224": "FollowerBigPiperainClass",
-    {
-      "RenameClassNameTo": "FollowerBigPiperainClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4" ],
-      "HasMethods": [ "ShortName" ]
-    },
-    //"GClass2119": "MagazineClass",
-    {
-      "RenameClassNameTo": "MagazineClass",
-      "IsClass": true,
-      "HasFields": [ "Tag" ],
-      "HasMethods": [ "GetMaxVisibleAmmo", "CheckCompatibility", "GetAmmoCountByLevel" ]
-    },
-    //"GClass214": "FollowerBullyBrainClass",
-    {
-      "RenameClassNameTo": "FollowerBullyBrainClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9" ],
-      "HasMethods": [ "ShortName" ]
-    },
-    //"GClass2152": "EquipmentClass",
-    {
-      "RenameClassNameTo": "EquipmentClass",
-      "IsClass": true,
-      "HasFields": [ "AllSlotNames" ]
-    },
-    //"GClass2183": "BulletClass",
-    {
-      "RenameClassNameTo": "BulletClass",
-      "IsClass": true,
-      "HasFields": [ "buckshotDispersion" ]
-    },
-    //"GClass2191": "InventoryClass",
-    {
-      "RenameClassNameTo": "InventoryClass",
-      "IsClass": true,
-      "HasMethods": [ "CreateInventoryHashSum" ]
-    },
-    //"GClass2204": "TraderControllerClass",
-    {
-      "RenameClassNameTo": "TraderControllerClass",
-      "IsClass": true,
-      "HasEvents": [ "OnItemFound" ]
-    },
-    //"GClass2207": "InventoryControllerClass",
-    {
-      "RenameClassNameTo": "InventoryControllerClass",
-      "IsClass": true,
-      "HasEvents": [ "CriticalInventoryErrorHappened" ]
-    },
-    //"GClass225": "RaiderBrainClass",
-    {
-      "RenameClassNameTo": "RaiderBrainClass",
-      "IsClass": true,
-      "HasFields": [ "int_0", "int_1", "int_2", "int_3", "int_4", "int_5", "int_6", "int_7", "int_8", "int_9", "int_10" ],
-      "HasMethods": [ "ShortName", "method_6", "method_7" ]
-    },
     //"GClass242": "ShootPointClass",
     {
-      "RenameClassNameTo": "ShootPointClass",
+      "RenameClassNameTo": "ShootPoint",
       "HasFields": [ "DistCoef", "Point" ]
     },
     //"GClass25": "AICoreControllerClass",
     {
-      "RenameClassNameTo": "AICoreControllerClass",
+      "RenameClassNameTo": "AICoreController",
       "HasMethods": [ "ListAgents" ]
-    },
-    //"GClass2547": "InsuranceCompanyClass",
-    {
-      "RenameClassNameTo": "InsuranceCompanyClass",
-      "HasMethods": [ "ClearInsuredItems" ]
-    },
-    //"GClass2548": "ItemClass",
-    {
-      "RenameClassNameTo": "ItemClass",
-      "HasFields": [ "ChildrenToInsure" ]
     },
     //"GClass2552": "RagfairSettingsClass",
     {
-      "RenameClassNameTo": "RagfairSettingsClass",
+      "RenameClassNameTo": "RagfairSettings",
       "HasFields": [ "DefaultDuration" ]
-    },
-    //"GClass2554": "RagFairClass",
-    {
-      "RenameClassNameTo": "RagFairClass",
-      "HasFields": [ "IconsLoader" ]
     },
     //"GClass2650": "JobPriority",
     {
@@ -382,21 +72,10 @@
       "HasFields": [ "General", "Low", "Immediate" ],
       "HasMethods": [ "Priority", "GetYieldDelegate" ]
     },
-    //"GClass267": "ZoneDangerAreasClass",
-    {
-      "RenameClassNameTo": "ZoneDangerAreasClass",
-      "HasEvents": [ "OnDangerAreaCreated" ]
-    },
     //"GClass2671": "BindableClass",
     {
-      "RenameClassNameTo": "BindableClass",
+      "RenameClassNameTo": "Bindable",
       "HasFields": [ "HasHandlers" ]
-    },
-    //"GClass2672`1": "BindableState", - Cannot be renamed to it, making far more type than this :(
-    //"GClass2686": "BundleLock",
-    {
-      "RenameClassNameTo": "BundleLock",
-      "HasFields": [ "MaxConcurrentOperations" ]
     },
     //"GClass2687`1": "DependencyGraph",
     {
@@ -404,111 +83,24 @@
       "HasFields": [ "Nodes" ],
       "HasMethods": [ "Retain", "Update", "RetainSeparate", "GetNode" ]
     },
-    //"GClass295": "BotFollowerClass",
+    //"GClass477": "BotGroupClass",
     {
-      "RenameClassNameTo": "BotFollowerClass",
-      "HasEvents": [ "OnBossFinded" ]
-    },
-    //"GClass312": "EnemiesControllerClass",
-    {
-      "RenameClassNameTo": "EnemiesControllerClass",
-      "HasFields": [ "EnemyInfos" ]
-    },
-    //"GClass326": "BotLayClass",
-    {
-      "RenameClassNameTo": "BotLayClass",
-      "HasFields": [ "IsLay" ],
-      "HasEvents": [ "OnLay" ]
-    },
-    //"GClass350": "BotBrainClass",
-    {
-      "RenameClassNameTo": "BotBrainClass",
-      "HasEvents": [ "OnSetStrategy" ]
-    },
-    //"GClass417": "BotTacticClass",
-    {
-      "RenameClassNameTo": "BotTacticClass",
-      "HasFields": [ "SubTactic" ]
-    },
-    //"GClass429": "BotWeaponControllerClass",
-    {
-      "RenameClassNameTo": "BotWeaponControllerClass",
-      "HasMethods": [ "TakePrevWeapon" ]
-    },
-    //"GClass443": "BodyPartClass",
-    {
-      "RenameClassNameTo": "BodyPartClass",
-      "HasFields": [ "Position", "Owner", "BodyPartType", "GrassDist", "GreenType" ],
-      "HasMethods": [ "Create" ]
-    },
-    //"GClass465": "DeadBodiesControllerClass",
-    {
-      "RenameClassNameTo": "DeadBodiesControllerClass",
-      "HasMethods": [ "BodiesByGroup" ]
-    },
-    //"GClass470": "BotRequestsControllerClass",
-    {
-      "RenameClassNameTo": "BotRequestsControllerClass",
-      "HasEvents": [ "OnAddRequest" ]
-    },
-    //"GClass474": "BotsGroupClass",
-    {
-      "RenameClassNameTo": "BotsGroup",
-      "HasMethods": [ "IsEnemy", "AddEnemy", "ContainsEnemy" ],
-      "HasFields": [ "Enemies" ],
-    },
-        //"GClass477": "BotGroupClass",
-        {
-            "RenameClassNameTo": "BotGroupClass",
-            "HasMethods": [ "PrepareToLoadBackend", "ChooseProfile" ],
-            "HasFields": [ "botDifficulty_0", "nullable_0", "wildSpawnType_0" ],
-	"HasProperties": ["Side"],
-"ExactProperties": ["Side"]
-        },
-    //"GClass484": "BotSettingsClass",
-    {
-      "RenameClassNameTo": "BotSettingsClass",
-      "HasFields": [ "IsLastPositionChecked", "LastChangeVisionTime" ],
-      "HasMethods": [ "GetPositionForSearch", "SetSuppressEndTime", "IsSuppressed" ]
-    },
-    //"GClass492": "AiDataClass",
-    {
-      "RenameClassNameTo": "AiDataClass",
-      "HasMethods": [ "IsBossOrFollowerRequireRevenge", "KillEnemy", "DoMove", "LeavePlace" ]
-    },
-    //"GClass495": "BotLoyaltyClass",
-    {
-      "RenameClassNameTo": "BotLoyaltyClass",
-      "HasFields": [ "HostileScavs" ],
-      "HasMethods": [ "KillEnemy", "MarkAsAggressor", "WasAttackedBy", "MarkAsCanBeFreeKilled" ]
+      "RenameClassNameTo": "BotPrepare",
+      "HasMethods": [ "PrepareToLoadBackend", "ChooseProfile" ],
+      "HasFields": [ "botDifficulty_0", "nullable_0", "wildSpawnType_0" ],
+      "HasProperties": [ "Side" ],
+      "ExactProperties": [ "Side" ]
     },
     //"GClass515": "TaskManagerClass",
     {
-      "RenameClassNameTo": "TaskManagerClass",
+      "RenameClassNameTo": "TaskManager",
       "HasMethods": [ "AddTask" ]
-    },
-    //"GClass523": "ScatteringSettingsClass",
-    {
-      "RenameClassNameTo": "ScatteringSettingsClass",
-      "HasFields": [ "CurrentScattering" ],
-      "HasMethods": [ "Check", "SetWeapon" ]
     },
     //"GClass528": "BotDifficultySettingsClass",
     {
-      "RenameClassNameTo": "BotDifficultySettingsClass",
+      "RenameClassNameTo": "BotDifficultySettings",
       "HasFields": [ "Curv", "Current", "FileSettings", "CurrentScatteringSetting" ],
       "HasMethods": [ "ApplyPresetLocation", "ApplyPreset" ]
-    },
-    //"GClass569": "ZoneLeaveControllerClass",
-    {
-      "RenameClassNameTo": "ZoneLeaveControllerClass",
-      "HasMethods": [ "IsDay", "IsDayByHour", "IsZoneBlockFor", "ClearZone" ]
-    },
-    //"GClass571": "BotsClass",
-    {
-      "RenameClassNameTo": "BotsClass",
-      "HasEvents": [ "OnBotAdd", "OnBotRemove" ],
-      "HasMethods": [ "Add", "AddFromList", "Clear", "CheckActivation", "AddPlayer", "Stop", "RemovePlayer" ]
     },
     //"GClass577": "BotsPresets",
     {
@@ -516,15 +108,9 @@
       "HasFields": [ "BundlesLoading" ],
       "HasMethods": [ "GetNewProfile", "CreateProfile" ]
     },
-    //"GClass596": "AbstractLogger",
-    {
-      "RenameClassNameTo": "AbstractLogger",
-      "HasFields": [ "UnityDebugLogsEnabled" ],
-      "HasMethods": [ "Dispose", "IsEnabled", "Log", "ConvertLogTypeToLogLevel", "LogInfoWithColor", "LogTrace", "LogDebug", "LogInfo", "LogInfoWithStackTrace", "LogWarn", "LogError", "LogException", "LogFormat", "LogInfoFieldsWithColor", "LogWarnFields", "LogTraceFields", "LogInfoFields", "LogErrorFields", "FormatFields" ]
-    },
     //"GClass674": "TimerClass",
     {
-      "RenameClassNameTo": "TimerClass",
+      "RenameClassNameTo": "InternalUnityTimer",
       "HasFields": [ "_startTime", "float_0" ],
       "HasMethods": [ "Start", "Stop", "SetPause" ]
     },
@@ -534,39 +120,12 @@
       "IsInterface": true,
       "HasMethods": [ "ChatSendMessage" ]
     },
-    //"GInterface12": "IGame",
-    {
-      "RenameClassNameTo": "IGame",
-      "IsInterface": true,
-      "HasFields": [ "Status", "GameDateTime", "BotsController" ],
-      "HasEvents": [ "UpdateByUnity" ],
-      "HasMethods": [ "BotUnspawn" ]
-    },
     //"GInterface148": "IConnectionHandler",
     {
       "RenameClassNameTo": "IConnectionHandler",
       "IsInterface": true,
       "HasFields": [ "TransportType", "UriParams", "RequestHeaders", "Closed" ],
       "HasMethods": [ "SetUri", "SetUriParam", "SetRequestHeader", "Open", "Close" ]
-    },
-    //"GInterface15": "IProfileData",
-    {
-      "RenameClassNameTo": "IProfileData",
-      "IsInterface": true,
-      "HasFields": [ "Side", "SpawnParams" ],
-      "HasMethods": [ "IsValidSpawnType", "GetDebugLocalName", "GetDebugData", "ShallChooseByData", "IsBossOrFollowerByTime", "IsZeroWave", "IsBossOrFollower", "IsSpawnOnStart", "CanAtZoneByType" ]
-    },
-    //"GInterface159": "IEffect",
-    {
-      "RenameClassNameTo": "IEffect",
-      "IsInterface": true,
-      "HasMethods": [ "AddWholeTime", "Propagate" ]
-    },
-    //"GInterface256": "ISpawnSystem",
-    {
-      "RenameClassNameTo": "ISpawnSystem",
-      "IsInterface": true,
-      "HasMethods": [ "SelectSpawnPoint", "SelectPlayerSavageSpawn", "SelectAISpawnPoints" ]
     },
     //"GInterface289": "IEasyBundle",
     {
@@ -581,33 +140,12 @@
       "HasFields": [ "Session" ],
       "HasMethods": [ "RegisterDevice", "Login", "GetAvailableLanguages" ]
     },
-    //"GInterface290": "IBundleLock",
-    {
-      "RenameClassNameTo": "IBundleLock",
-      "IsInterface": true,
-      "HasFields": [ "IsLocked" ],
-      "HasMethods": [ "Lock", "Unlock" ]
-    },
     //"GInterface71": "IAIDetails",
     {
       "RenameClassNameTo": "IAIDetails",
       "IsInterface": true,
       "HasFields": [ "AIData", "iPlayer", "IsAI", "Nickname" ]
     },
-    //"GStruct109": "WeatherSettings",
-    {
-      "RenameClassNameTo": "WeatherSettings",
-      "IsStruct": true,
-      "HasFields": [ "IsRandomTime", "IsRandomWeather" ]
-    },
-    //"GStruct39": "AirplaneDataPacketStruct"
-    {
-      "RenameClassNameTo": "AirplanDataPacketStruct",
-      "IsStruct": true,
-      "HasFields": [ "AirplanePercent" ],
-      "HasMethods": []
-    },
-
 
     // ------------------------------------------------------------------------------------------
     // SIT Remapping List
@@ -618,12 +156,12 @@
       "HasMethods": [ "Load", "Unload" ]
     },
     {
-      "RenameClassNameTo": "SProgress",
+      "RenameClassNameTo": "LevelProgress",
       "HasFields": [ "Progress", "Stage" ],
       "HasMethods": []
     },
     {
-      "RenameClassNameTo": "GProgress",
+      "RenameClassNameTo": "ProgressManager",
       "HasFields": [ "action_0", "cancellationToken_0" ],
       "HasMethods": [ "Report" ]
     },
@@ -635,35 +173,17 @@
     {
       "RenameClassNameTo": "GStatisticsSession",
       "HasFields": [],
-      "HasMethods": [ "BeginStatisticsSession", "EndStatisticsSession" ]
-    },
-    {
-      "RenameClassNameTo": "GGroupManagement",
-      "HasFields": [],
-      "HasMethods": [ "DisbandGroup", "LeaveGroup", "ExitFromMatchMaker" ]
-    },
-    {
-      "RenameClassNameTo": "BotPresetFactory",
-      "HasFields": [],
-      "HasMethods": [ "GetNewProfile", "CreateProfile" ]
+      "HasMethods": [ "BeginStatisticsSession", "EndStatisticsSession" ],
+      "IsClass": true
     },
     {
       "RenameClassNameTo": "BotCreator",
       "HasFields": [ "BotsLoading", "BundlesLoading", "StartProfilesLoaded" ],
-      "HasMethods": []
+      "HasMethods": [],
+      "IsClass": true
     },
     {
-      "RenameClassNameTo": "IAIData",
-      "HasFields": [ "AskRequests", "AIBossPlayer", "GetFlare", "IAmBoss", "UsingLight", "Player", "PowerOfEquipment" ],
-      "HasMethods": []
-    },
-    {
-      "RenameClassNameTo": "GHealthController",
-      "HasFields": [],
-      "HasMethods": [ "ChangeEnergy", "ChangeHealth", "ChangeHydration", "DoContusion" ]
-    },
-    {
-      "RenameClassNameTo": "BossSpawnerClass",
+      "RenameClassNameTo": "BossSpawner",
       "HasFields": [ "BossSpawnWaves", "HaveSectants" ],
       "HasMethods": [ "Run", "Stop" ]
     },
@@ -695,11 +215,11 @@
     },
     {
       "RenameClassNameTo": "BotSettingsRepoClass",
-      "HasMethods": [ "CountAsBoss", "GetPhraseTagFromRole", "GetScavRoleKey", "IsBoss" ]
+      "HasMethods": [ "CountAsBossForStatistics", "GetPhraseTagFromRole", "GetScavRoleKey", "IsBoss" ]
     },
     {
       "RenameClassNameTo": "BotSettingsValuesClass",
-      "HasFields": [ "IsBoss", "IsFollower", "IsHostileToEverybody", "CountAsBoss", "ScavRoleKey", "PhraseTag" ]
+      "HasFields": [ "IsBoss", "IsFollower", "IsHostileToEverybody", "CountAsBossForStatistics", "ScavRoleKey", "PhraseTag" ]
     },
     {
       "RenameClassNameTo": "EasyBundle",
@@ -751,18 +271,13 @@
     {
       "RenameClassNameTo": "BarterJson",
       "HasFields": [ "_tpl", "count", "level", "onlyFunctional" ],
-      "HasMethods": []
+      "HasMethods": [],
+      "ExactMethods": []
     },
     // GClass1612
     {
       "RenameClassNameTo": "ErrorCallback",
       "HasFields": [ "errorCode", "error" ]
-    },
-    // GClass551
-    {
-      "RenameClassNameTo": "ResultJson",
-      "HasFields": [ "err", "errmsg", "data", "crc" ],
-      "HasMethods": []
     },
     // GClass757
     {
@@ -811,13 +326,6 @@
       "RenameClassNameTo": "TalkTimer",
       "HasMethods": [ "IsTalkDetected" ]
     },
-    // GInterface4
-    {
-      "RenameClassNameTo": "IBossPosition",
-      "IsInterface": true,
-      "HasEvents": [ "OnPositionsRecalculated" ],
-      "HasMethods": [ "FollowersPositions", "SetFollowersPositions", "GetTargetToLook" ]
-    },
     // GInterface285
     {
       "RenameClassNameTo": "IItemKV",
@@ -831,25 +339,23 @@
       "IsInterface": true,
       "ExactProperties": [ "Status" ]
     },
-    //  GClass584
+    //  GClass578
     {
-      "RenameClassNameTo": "PlayerScavProfileData",
-      "HasInterfaces": [ "IProfileData" ],
-      "HasMethods": [ "CanSpawnByHour", "ChooseProfile" ],
+      "RenameClassNameTo": "BotScavProfileData",
+      "HasInterfaces": [ "IGetProfileData" ],
+      "HasMethods": [ "CanSpawnByHour", "ChooseProfile", "SameSide" ],
       "HasProperties": [ "Side", "SpawnParams" ],
       "HasFields": [ "nullable_0" ],
       "ExactProperties": [ "Side", "SpawnParams" ]
     },
-    //  GClass578
-    {
-      "RenameClassNameTo": "BotScavProfileData",
-      "HasInterfaces": [ "IProfileData" ],
-      "HasMethods": [ "SameSide" ]
-    },
-    // Fixing Bullshit ^^
+    //  GClass584
     {
       "RenameClassNameTo": "PlayerScavProfileData",
-      "ClassName": "PlayerScavProfileData1"
+      "HasInterfaces": [ "IGetProfileData" ],
+      "HasMethods": [ "CanSpawnByHour", "ChooseProfile" ],
+      "HasProperties": [ "Side", "SpawnParams" ],
+      "HasFields": [ "nullable_0" ],
+      "ExactProperties": [ "Side", "SpawnParams" ]
     },
     // GClass1536
     {
@@ -893,11 +399,6 @@
       "HasFields": [ "filesChecker", "ordinaryFileEnsuranceMode", "criticalFileEnsuranceMode", "resultPath" ]
     },
     {
-      "RenameClassNameTo": "AirplaneLogicClass",
-      "IsClass": true,
-      "ClassName": "AirdropLogicClass1"
-    },
-    {
       "RenameClassNameTo": "LocalBackendCommands",
       "HasInterfaces": [ "ITemplateCustomization", "IBackEndSession2", "IBackEndSession", "ISession", "ITrading", "IRepairController" ],
       "HasMethods": [ "method_25" ]
@@ -925,7 +426,7 @@
     {
       "RenameClassNameTo": "ProfileInfoJson",
       "HasFields": [ "Nickname", "Side", "Level", "MemberCategory" ],
-      "ExactFields": [ "Nickname", "Side", "Level", "MemberCategory" ]
+      "HasMethods": [ "GetFromChatMemberInfo" ]
     },
     {
       "RenameClassNameTo": "FriendListJson",
@@ -974,13 +475,10 @@
       "HasProperties": [ "isSecured", "sizeWidth", "sizeHeight", "ItemInteractionButtons" ]
     },
     {
-      "RenameClassNameTo": "CompoundItem",
-      "ClassName": "LootItemClass2"
-    },
-    {
       "RenameClassNameTo": "BindableState",
-      "BaseType": "BindableClass",
-      "HasMethods": []
+      "BaseType": "Bindable",
+      "HasMethods": [],
+      "HasProperties": [ "Value" ]
     },
     {
       "RenameClassNameTo": "MagazineTemplate",
@@ -995,6 +493,11 @@
     {
       "RenameClassNameTo": "Suites",
       "HasFields": [ "suites", "_id" ]
+    },
+    {
+      "RenameClassNameTo": "IFilterCustomization",
+      "IsInterface": true,
+      "HasMethods": [ "FilterCustomization" ]
     }
   ],
   "DefinedTypesToForcePublic": [
