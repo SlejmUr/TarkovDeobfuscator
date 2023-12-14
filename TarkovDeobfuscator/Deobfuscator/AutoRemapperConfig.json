@@ -341,15 +341,6 @@
     },
     //  GClass578
     {
-      "RenameClassNameTo": "BotScavProfileData",
-      "HasInterfaces": [ "IGetProfileData" ],
-      "HasMethods": [ "CanSpawnByHour", "ChooseProfile", "SameSide" ],
-      "HasProperties": [ "Side", "SpawnParams" ],
-      "HasFields": [ "nullable_0" ],
-      "ExactProperties": [ "Side", "SpawnParams" ]
-    },
-    //  GClass584
-    {
       "RenameClassNameTo": "PlayerScavProfileData",
       "HasInterfaces": [ "IGetProfileData" ],
       "HasMethods": [ "CanSpawnByHour", "ChooseProfile" ],
@@ -357,6 +348,17 @@
       "HasFields": [ "nullable_0" ],
       "ExactProperties": [ "Side", "SpawnParams" ]
     },
+    //
+    {
+      "RenameClassNameTo": "BotScavProfileData",
+      "HasInterfaces": [ "IGetProfileData" ],
+      "HasMethods": [ "CanSpawnByHour", "ChooseProfile", "SameSide" ],
+      "HasProperties": [ "Side", "SpawnParams" ],
+      "HasFields": [ "nullable_0", "botDifficulty_0" ],
+      "ExactProperties": [ "Side", "SpawnParams" ]
+    },
+    //  GClass584
+
     // GClass1536
     {
       "RenameClassNameTo": "SlotsItemInfo",
@@ -498,6 +500,13 @@
       "RenameClassNameTo": "IFilterCustomization",
       "IsInterface": true,
       "HasMethods": [ "FilterCustomization" ]
+    },
+
+    {
+      "RenameClassNameTo": "KeyInteractionResult",
+      "IsClass": true,
+      "HasFields": [ "Key", "From", "Succeed", "DiscardResult" ],
+      "HasMethods": [ "CanExecute" ]
     }
   ],
   "DefinedTypesToForcePublic": [
@@ -515,5 +524,6 @@
     "TransportPrefix"
   ],
   "ForceAllToPublic": false,
-  "RenameEmptyToACS": false
+  "RenameEmptyToACS": false,
+  "EnableRemapBrainAndItems":  true
 }

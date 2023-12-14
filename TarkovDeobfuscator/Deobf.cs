@@ -121,11 +121,20 @@ namespace TarkovDeobfuscator
                 {
                     if (oldAssembly != null)
                     {
-                        RemapperConfig autoRemapperConfig = JsonConvert.DeserializeObject<RemapperConfig>(File.ReadAllText(Directory.GetCurrentDirectory() + "//Deobfuscator/AutoRemapperConfig.json"));
-                        RemapByAutoConfiguration(oldAssembly, autoRemapperConfig);
-                        RemapByDefinedConfiguration(oldAssembly, autoRemapperConfig);
-                        RemapAfterEverything(oldAssembly, autoRemapperConfig);
-                        oldAssembly.Write(assemblyPath.Replace(".dll", "-remapped.dll"));
+                        try
+                        {
+                            RemapperConfig autoRemapperConfig = JsonConvert.DeserializeObject<RemapperConfig>(File.ReadAllText(Directory.GetCurrentDirectory() + "//Deobfuscator/AutoRemapperConfig.json"));
+                            RemapByAutoConfiguration(oldAssembly, autoRemapperConfig);
+                            RemapByDefinedConfiguration(oldAssembly, autoRemapperConfig);
+                            RemapAfterEverything(oldAssembly, autoRemapperConfig);
+                            oldAssembly.Write(assemblyPath.Replace(".dll", "-remapped.dll"));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                            throw;
+                        }
+
                     }
                 }
             }
@@ -393,6 +402,25 @@ namespace TarkovDeobfuscator
                     }
                 }
             }
+            if (autoRemapperConfig.TypesToConvertConstructorsToPublic != null)
+            {
+                Log($"Remapper: Setting EFT Types Cons to Public to public");
+                foreach (var ctf in autoRemapperConfig.TypesToConvertConstructorsToPublic)
+                {
+                    var foundTypes = oldAssembly.MainModule.GetTypes()
+                        .Where(x => x.FullName.StartsWith(ctf, StringComparison.OrdinalIgnoreCase) || x.FullName.EndsWith(ctf));
+                    foreach (var t in foundTypes)
+                    {
+                        foreach (var c in t.GetConstructors())
+                        {
+                            c.IsPublic = true;
+                        }
+                        //t.Resolve();
+                    }
+                }
+
+            }
+
 
             Log($"Remapper: Setting All Types to public");
             if (autoRemapperConfig.ForceAllToPublic)
@@ -451,7 +479,7 @@ namespace TarkovDeobfuscator
                 {
                     List<TypeDefinition> typeDefinitions = new();
                     var findTypes
-                        = oldAssembly.MainModule.GetTypes().ToList();
+                        = oldAssembly.MainModule.GetTypes().OrderBy(x=>x.Name).ToList();
                     /*
                     if (!x)
                     {
@@ -477,6 +505,34 @@ namespace TarkovDeobfuscator
                         x = true;
                     }
                     */
+
+                    // Filter Types by Must Be GClass
+                    findTypes = findTypes.Where(
+                        x =>
+                            (
+                                   !config.MustBeGClass.HasValue || (config.MustBeGClass.Value && x.Name.StartsWith("GClass"))
+                            )
+                        ).ToList();
+
+                    // Filter Type by IsNestedInClass
+                    findTypes = findTypes.Where(
+                       x =>
+                           (
+                               string.IsNullOrEmpty(config.IsNestedInClass)
+                               || (!string.IsNullOrEmpty(config.IsNestedInClass) && x.FullName.Contains(config.IsNestedInClass + "+", StringComparison.OrdinalIgnoreCase))
+                               || (!string.IsNullOrEmpty(config.IsNestedInClass) && x.FullName.Contains(config.IsNestedInClass + ".", StringComparison.OrdinalIgnoreCase))
+                               || (!string.IsNullOrEmpty(config.IsNestedInClass) && x.FullName.Contains(config.IsNestedInClass + "/", StringComparison.OrdinalIgnoreCase))
+                           )
+                       ).ToList();
+
+                    // Filter Types by Inherits Class
+                    findTypes = findTypes.Where(
+                        x =>
+                            (
+                                config.InheritsClass == null || config.InheritsClass.Length == 0
+                                || (x.BaseType != null && x.BaseType.Name == config.InheritsClass)
+                            )
+                        ).ToList();
 
                     // Filter Types by Class Name Matching
                     findTypes = findTypes.Where(
@@ -590,11 +646,25 @@ namespace TarkovDeobfuscator
 
                         ).ToList();
 
+                    // Filter Types by Constructor
+                    if (config.HasConstructorArgs != null)
+                        findTypes = findTypes.Where(t => t.Methods.Any(x => x.IsConstructor && x.Parameters.Count == config.HasConstructorArgs.Length)).ToList();
+
+                    // Filter Types by Is Structure
+                    findTypes = findTypes.Where(
+                        x =>
+                           (
+                                (!config.IsStruct.HasValue || (config.IsStruct.HasValue && config.IsStruct.Value && (x.IsValueType)))
+                           )
+                        ).ToList();
+
                     //Filter by BaseType
                     if (!string.IsNullOrEmpty(config.BaseType))
                     {
                         foreach (var t in findTypes)
                         {
+                            
+
                             if (t.BaseType != null && t.BaseType.Name != "Object")
                             {
                                 if (t.BaseType.Name.Contains(config.BaseType))
@@ -761,12 +831,10 @@ namespace TarkovDeobfuscator
                     if (typeDefinitions.Count() > 0)
                     { findTypes = typeDefinitions; }
 
-
-
-                    
                     if (findTypes.Any())
                     {
-                        if (findTypes.Count() > 1)
+                        var onlyRemapFirstFoundType = config.OnlyRemapFirstFoundType.HasValue && config.OnlyRemapFirstFoundType.Value;
+                        if (findTypes.Count() > 1 && !onlyRemapFirstFoundType)
                         {
                             findTypes = findTypes
                                 .OrderBy(x => !x.Name.StartsWith("GClass") && !x.Name.StartsWith("GInterface"))
@@ -795,12 +863,26 @@ namespace TarkovDeobfuscator
                                 Log($"Remapper: Remapped {oldClassName} to {newClassName}");
                                 countOfDefinedMappingSucceeded++;
 
+                                if (config.ConvertInternalMethodsToPublic ?? true)
+                                {
+                                    foreach (var m in t.Methods)
+                                    {
+                                        m.IsPublic = true;
+                                    }
+                                }
                             }
                         }
                         else
                         {
                             var newClassName = config.RenameClassNameTo;
-                            var t = findTypes.SingleOrDefault();
+                            var t = findTypes.First();
+
+                            if (t == null)
+                            {
+                                Log($"Remapper: Failed to remap {config.RenameClassNameTo} (Default is Null)");
+                                countOfDefinedMappingFailed++;
+                                continue;
+                            }
                             var oldClassName = t.Name;
                             if (t.IsInterface && !newClassName.StartsWith("I"))
                                 newClassName = newClassName.Insert(0, "I");
@@ -809,6 +891,17 @@ namespace TarkovDeobfuscator
 
                             Log($"Remapper: Remapped {oldClassName} to {newClassName}");
                             countOfDefinedMappingSucceeded++;
+                        }
+
+                        if (config.RemoveAbstract.HasValue && config.RemoveAbstract.Value)
+                        {
+                            foreach (var type in findTypes)
+                            {
+                                if (type.IsAbstract)
+                                {
+                                    type.IsAbstract = false;
+                                }
+                            }
                         }
                     }
                     else
@@ -860,12 +953,16 @@ namespace TarkovDeobfuscator
 
                 }
             }
-            RemapperVoid(oldAssembly);
+            RemapperVoid(oldAssembly, autoRemapperConfig);
+            RemapAddSPTUsecAndBear(oldAssembly, autoRemapperConfig);
         }
 
 
-        static void RemapperVoid(AssemblyDefinition oldAssembly)
+        static void RemapperVoid(AssemblyDefinition oldAssembly, RemapperConfig config)
         {
+            if (!config.EnableRemapBrainAndItems.HasValue || !config.EnableRemapBrainAndItems.Value)
+                return;
+
             var TypeDefs = oldAssembly.MainModule.GetTypes().ToList();
             if (TypeDefs == null)
                 return;
@@ -878,7 +975,7 @@ namespace TarkovDeobfuscator
                     if (method != null)
                     {
                         var name = method.Body.Instructions[0];
-                        Console.WriteLine(brain.Name + " remapped to " + name.Operand.ToString().Replace(" ", "") + "BotBrain");
+                        Log(brain.Name + " remapped to " + name.Operand.ToString().Replace(" ", "") + "BotBrain");
                         brain.Name = name.Operand.ToString().Replace(" ", "") + "BotBrain";
                     }
                 }
@@ -910,14 +1007,14 @@ namespace TarkovDeobfuscator
                         }
                         else
                         {
-                            Console.WriteLine("ERROR, no ID: " + Id);
+                            Log("ERROR, no ID: " + Id);
                             continue;
                         }
 
                         var next = instruction.Next;
                         if (next.OpCode.Code == Code.Ldtoken)
                         {
-                            Console.WriteLine("ID: " + Id);
+                            Log("ID: " + Id);
                             object typ = next.Operand;
                             string type_thing = typ.ToString();
                             
@@ -926,7 +1023,7 @@ namespace TarkovDeobfuscator
                                 var t = type_thing.Split(".");
                                 type_thing = t.Last();
                             }
-                            Console.WriteLine("OldType: " + type_thing);
+                            Log("OldType: " + type_thing);
                             if (type_thing.Contains("Template") && !IsTemplates)
                             {
                                 IsTemplates = true;
@@ -946,18 +1043,47 @@ namespace TarkovDeobfuscator
                             if (Customization)
                                 tpye_from_list =  "Customization" + tpye_from_list;
 
-                            Console.WriteLine("NewType: " + tpye_from_list);
+                            Log("NewType: " + tpye_from_list);
 
                             var renameType = TypeDefs.Where(t => t.Name.Contains(type_thing)).FirstOrDefault();
                             if (renameType != null)
                             {
                                 renameType.Name = tpye_from_list;
                             }
-                            Console.WriteLine("--------------------------");
+                            Log("--------------------------");
                         }
                     }
                 }
             }
+        }
+
+        static void RemapAddSPTUsecAndBear(AssemblyDefinition assembly, RemapperConfig config)
+        {
+            if (!config.EnableAddSPTUsecBearToDll.HasValue || !config.EnableAddSPTUsecBearToDll.Value)
+                return;
+
+            long sptUsecValue = 0x29;
+            long sptBearValue = 0x2A;
+
+            var botEnums = assembly.MainModule.GetType("EFT.WildSpawnType");
+
+            if (botEnums.Fields.Any(x => x.Name == "sptUsec"))
+                return;
+
+            var sptUsec = new FieldDefinition("sptUsec",
+                    Mono.Cecil.FieldAttributes.Public | Mono.Cecil.FieldAttributes.Static | Mono.Cecil.FieldAttributes.Literal | Mono.Cecil.FieldAttributes.HasDefault,
+                    botEnums)
+            { Constant = sptUsecValue };
+
+            var sptBear = new FieldDefinition("sptBear",
+                    Mono.Cecil.FieldAttributes.Public | Mono.Cecil.FieldAttributes.Static | Mono.Cecil.FieldAttributes.Literal | Mono.Cecil.FieldAttributes.HasDefault,
+                    botEnums)
+            { Constant = sptBearValue };
+
+            botEnums.Fields.Add(sptUsec);
+            botEnums.Fields.Add(sptBear);
+
+            Log($"Remapper: Added SPTUsec and SPTBear to EFT.WildSpawnType");
         }
 
         public static string[] SplitCamelCase(string input)
