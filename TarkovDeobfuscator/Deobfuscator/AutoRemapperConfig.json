@@ -507,6 +507,74 @@
       "IsClass": true,
       "HasFields": [ "Key", "From", "Succeed", "DiscardResult" ],
       "HasMethods": [ "CanExecute" ]
+    },
+    {
+      "RenameClassNameTo": "AudioController",
+      "IsAbstract": true,
+      "HasMethods": [ "GetDistanceToCamera", "SetBaseVolume", "OnSlide", "OnStart", "OnGrab", "OnEnd", "PlayGearSound" ]
+    },
+    {
+      "RenameClassNameTo": "IHandsOperation",
+      "IsInterface": true,
+      "HasProperties": [ "CanFastForward", "Callbacks" ]
+    },
+    {
+      "RenameClassNameTo": "IGridUpdater",
+      "IsInterface": true,
+      "HasMethods": [ "UpdateGridParameters" ]
+    },
+    {
+      "RenameClassNameTo": "VaultingRestrictions",
+      "HasInterfaces": [ "IVaultingRestrictionsModel", "IVaultingRestrictionsModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "GridSettings",
+      "HasInterfaces": [ "IGridSettingsModel", "IGridSettingsModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "GridPoints",
+      "HasInterfaces": [ "IGridPointsModel", "IGridPointsModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "VaultingState",
+      "HasInterfaces": [ "IVaultingStateModel", "IVaultingStateModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "GridRootMover",
+      "HasInterfaces": [ "IGridRootMoverModel", "IGridRootMoverModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "ObstacleCalculator",
+      "HasInterfaces": [ "IObstacleCalculatorModel", "IObstacleCalculatorModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "AutomaticVaulting",
+      "HasInterfaces": [ "IAutomaticVaultingModel", "IAutomaticVaultingModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "SurfaceApproximator",
+      "HasInterfaces": [ "ISurfaceApproximatorModel", "ISurfaceApproximatorModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "VaultingStates",
+      "HasInterfaces": [ "IVaultingStatesModel" ]
+    },
+    {
+      "RenameClassNameTo": "WeightCalculator",
+      "HasInterfaces": [ "IWeightCalculatorModel" ]
+    },
+    {
+      "RenameClassNameTo": "StairsCalculator",
+      "HasInterfaces": [ "IStairsCalculatorModel" ]
+    },
+    {
+      "RenameClassNameTo": "IVautingModel",
+      "IsInterface": true,
+      "HasProperties": [ "GridPointsModel", "GridSettingsModel", "VaultingRestrictionsModel", "VaultingStateModel", "GridRootMoverModel", "ObstacleCalculatorModel", "AutomaticVaultingModel", "SurfaceApproximatorModel", "VaultingStatesModel", "WeightCalculatorModel", "StairsCalculatorModel" ]
+    },
+    {
+      "RenameClassNameTo": "Vaulting",
+      "HasInterfaces": [ "ISurfaceApproximatorModel", "ISurfaceApproximatorModelDebug" ]
     }
   ],
   "DefinedTypesToForcePublic": [
