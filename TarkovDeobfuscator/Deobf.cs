@@ -480,31 +480,6 @@ namespace TarkovDeobfuscator
                     List<TypeDefinition> typeDefinitions = new();
                     var findTypes
                         = oldAssembly.MainModule.GetTypes().OrderBy(x=>x.Name).ToList();
-                    /*
-                    if (!x)
-                    {
-                        foreach (var typeDefinition in findTypes)
-                        {
-                            if (typeDefinition.FullName.Contains("MatchmakerOfflineRaidScreen"))
-                            {
-                                Console.WriteLine(typeDefinition.IsNested);
-                                Console.WriteLine(typeDefinition.Name);
-                                Console.WriteLine(typeDefinition.FullName);
-                                var nest = typeDefinition.NestedTypes.ToList();
-                                Console.WriteLine(nest.Count);
-                                foreach (var item in nest)
-                                {
-                                    Console.WriteLine(typeDefinition.IsNested);
-                                    Console.WriteLine(item.Name);
-                                    Console.WriteLine(item.FullName);
-                                }
-                                Console.WriteLine();
-                            }
-
-                        }
-                        x = true;
-                    }
-                    */
 
                     // Filter Types by Must Be GClass
                     findTypes = findTypes.Where(
@@ -960,7 +935,13 @@ namespace TarkovDeobfuscator
 
         static void RemapperVoid(AssemblyDefinition oldAssembly, RemapperConfig config)
         {
-            if (!config.EnableRemapBrainAndItems.HasValue || !config.EnableRemapBrainAndItems.Value)
+            if (config == null)
+                return;
+
+            if (config.EnableRemapBrainAndItems == null)
+                return;
+
+            if (!config.EnableRemapBrainAndItems.Value)
                 return;
 
             var TypeDefs = oldAssembly.MainModule.GetTypes().ToList();
@@ -975,6 +956,10 @@ namespace TarkovDeobfuscator
                     if (method != null)
                     {
                         var name = method.Body.Instructions[0];
+                        if (name.Operand == null)
+                            continue;
+                        if (name.Operand.ToString() == string.Empty)
+                            continue;
                         Log(brain.Name + " remapped to " + name.Operand.ToString().Replace(" ", "") + "BotBrain");
                         brain.Name = name.Operand.ToString().Replace(" ", "") + "BotBrain";
                     }
@@ -1059,7 +1044,14 @@ namespace TarkovDeobfuscator
 
         static void RemapAddSPTUsecAndBear(AssemblyDefinition assembly, RemapperConfig config)
         {
-            if (!config.EnableAddSPTUsecBearToDll.HasValue || !config.EnableAddSPTUsecBearToDll.Value)
+            if (config == null)
+                return;
+
+            if (config.EnableAddSPTUsecBearToDll == null)
+                return;
+
+
+            if (!config.EnableAddSPTUsecBearToDll.Value)
                 return;
 
             long sptUsecValue = 0x29;

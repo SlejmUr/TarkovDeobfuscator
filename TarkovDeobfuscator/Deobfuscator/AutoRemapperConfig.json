@@ -520,10 +520,14 @@
   "TypesToForceAllPublicFieldsAndProperties": [
     "BaseLocalGame"
   ],
+  "TypesToConvertConstructorsToPublic": [
+
+  ],
   "ForceTypeToPublic": [
     "TransportPrefix"
   ],
   "ForceAllToPublic": false,
   "RenameEmptyToACS": false,
-  "EnableRemapBrainAndItems":  true
+  "EnableRemapBrainAndItems": true,
+  "EnableAddSPTUsecBearToDll":  false
 }
