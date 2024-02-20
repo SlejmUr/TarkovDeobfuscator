@@ -20,11 +20,10 @@
     {
         public string RenameClassNameTo { get; set; }
         public string ClassName { get; set; }
-        public string ClassFullNameContains { get; set; }
+        public string ClassNameFull { get; set; }
         public bool? OnlyTargetInterface { get; set; } //not implemented
         public bool? IsClass { get; set; }
         public bool? IsInterface { get; set; }
-        public bool? IsNotInterface { get; set; } // not implemented
         public bool? IsStruct { get; set; }
         public bool HasExactFields { get; set; }
         public string[] HasFields { get; set; }

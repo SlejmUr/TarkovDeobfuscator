@@ -516,6 +516,15 @@ namespace TarkovDeobfuscator
                                 config.ClassName == null || config.ClassName.Length == 0 || (x.FullName.Contains(config.ClassName))
                             )
                         ).ToList();
+
+                    // Filter Types by Class Name Matching
+                    findTypes = findTypes.Where(
+                        x =>
+                            (
+                                config.ClassNameFull == null || config.ClassNameFull.Length == 0 || x.FullName == config.ClassNameFull
+                            )
+                        ).ToList();
+
                     // Filter Types by Methods
                     findTypes = findTypes.Where(x
                             =>
