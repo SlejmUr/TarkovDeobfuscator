@@ -148,7 +148,8 @@
     {
       "RenameClassNameTo": "IAIDetails",
       "IsInterface": true,
-      "HasProperties": [ "AIData", "iPlayer", "IsAI", "Nickname" ]
+      "HasProperties": [ "AIData", "iPlayer", "IsAI", "Nickname" ],
+      "HasMethods": [ "HasBodyPartCollider" ]
     },
 
     // ------------------------------------------------------------------------------------------
@@ -187,7 +188,8 @@
     },
     {
       "RenameClassNameTo": "BotCreator",
-      "HasProperties": [ "BotsLoading", "BundlesLoading", "StartProfilesLoaded" ]
+      "HasProperties": [ "BotsLoading" ],
+      "IsClass": true
     },
     {
       "RenameClassNameTo": "BossSpawner",
@@ -210,7 +212,9 @@
     },
     {
       "RenameClassNameTo": "AbstractFirearmActioner",
-      "HasMethodsVirtual": [ "ShowGesture", "ReloadMag", "BlindFire", "OnFold" ]
+      "HasMethodsVirtual": [ "ShowGesture", "ReloadMag", "BlindFire", "OnFold" ],
+      "IsAbstract": true,
+      "BaseType": "AbstractCurrentHandsOperation"
     },
     {
       "RenameClassNameTo": "JsonConvertersClass",
@@ -230,7 +234,7 @@
     },
     {
       "RenameClassNameTo": "EasyBundle",
-      "HasFields": [ "DependencyKeys", "Assets", "SameNameAsset", "Progress", "LoadState" ],
+      "HasProperties": [ "DependencyKeys", "Assets", "SameNameAsset", "Progress", "LoadState" ],
       "HasMethods": [ "Load", "Unload" ]
     },
 
@@ -258,8 +262,8 @@
     {
       "RenameClassNameTo": "LocalBackendEvent",
       "IsClass": true,
-      "ClassName": "BackendEvent1",
-      "HasEvents": [ "OnSessionError" ]
+      "HasEvents": [ "OnSessionError" ],
+      "IsSealed": true
     },
     // Class212 => BackendSender (BackendEventx-1)
     {

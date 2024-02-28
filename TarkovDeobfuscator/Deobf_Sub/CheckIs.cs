@@ -58,7 +58,7 @@ namespace TarkovDeobfuscator.Deobf_Sub
         {
             if (config.IsStruct.HasValue && config.IsStruct.Value)
             {
-                return types.Where(x => x.IsValueType).ToList();
+                return types.Where(x => x.IsValueType && !x.IsEnum).ToList();
             }
             return types;
         }
