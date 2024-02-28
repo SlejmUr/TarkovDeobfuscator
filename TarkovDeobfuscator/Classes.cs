@@ -25,11 +25,10 @@
         public bool? IsClass { get; set; }
         public bool? IsInterface { get; set; }
         public bool? IsStruct { get; set; }
-        public bool HasExactFields { get; set; }
         public string[] HasFields { get; set; }
         public string[] ExactFields { get; set; }
         public string[] HasProperties { get; set; }
-        public string[] HasFieldsStatic { get; set; }//not implemented
+        public string[] HasFieldsStatic { get; set; }// AKA const
         public string[] ExactProperties { get; set; }
         public string[] HasMethods { get; set; }
         public string[] ExactMethods { get; set; }
@@ -46,6 +45,7 @@
         public string? BaseType { get; set; }
         public bool? IsNested { get; set; }
         public bool? IsAbstract { get; set; }
+        public bool? IsSealed { get; set; }
 
         // SIT
         public bool? ConvertInternalMethodsToPublic { get; set; }

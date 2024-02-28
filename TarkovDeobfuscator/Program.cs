@@ -30,6 +30,12 @@ namespace TarkovDeobfuscator
                     Deobf.DeobfuscateAssembly($"{Path}/Assembly-CSharp.dll", $"{Path}", true, true, true);
                     return;
                 }
+                if (args[0].Contains("-fromcleaned"))
+                {
+                    Console.WriteLine("Remapping from prev cleaned assembly!");
+                    Deobf.RemapFromCleanedAssembly($"{Path}/Assembly-CSharp.dll", $"{Path}");
+                    return;
+                }
             }
 
             Deobf.DeobfuscateAssembly($"{Path}/Assembly-CSharp.dll", $"{Path}", true, true, true);

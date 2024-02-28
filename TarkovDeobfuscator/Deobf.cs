@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
+using TarkovDeobfuscator.Deobf_Sub;
 
 namespace TarkovDeobfuscator
 {
@@ -99,6 +100,17 @@ namespace TarkovDeobfuscator
             return true;
         }
 
+
+
+
+        public static void RemapFromCleanedAssembly(string assemblyPath, string managedPath)
+        {
+            var cleanedDllPath = Path.Combine(Path.GetDirectoryName(assemblyPath), Path.GetFileNameWithoutExtension(assemblyPath) + "-cleaned.dll");
+            RemapKnownClasses(managedPath, cleanedDllPath);
+        }
+
+
+
         private static void OverwriteExistingAssembly(string assemblyPath, string cleanedDllPath, bool deleteCleaned = false)
         {
             // Do final copy to Assembly
@@ -125,7 +137,8 @@ namespace TarkovDeobfuscator
                         {
                             RemapperConfig autoRemapperConfig = JsonConvert.DeserializeObject<RemapperConfig>(File.ReadAllText(Directory.GetCurrentDirectory() + "//Deobfuscator/AutoRemapperConfig.json"));
                             RemapByAutoConfiguration(oldAssembly, autoRemapperConfig);
-                            RemapByDefinedConfiguration(oldAssembly, autoRemapperConfig);
+                            DefineRemap.RemapByDefinedConfiguration(oldAssembly, autoRemapperConfig);
+                            //RemapByDefinedConfiguration(oldAssembly, autoRemapperConfig);
                             RemapAfterEverything(oldAssembly, autoRemapperConfig);
                             oldAssembly.Write(assemblyPath.Replace(".dll", "-remapped.dll"));
                         }
@@ -234,11 +247,6 @@ namespace TarkovDeobfuscator
                     )
                         continue;
 
-                    //if(prop.Name == "AirplaneDataPacket")
-                    //{
-
-                    //}
-
                     var n = prop.FieldType.Name
                         .Replace("[]", "")
                         .Replace("`1", "")
@@ -249,10 +257,6 @@ namespace TarkovDeobfuscator
                         gclassToNameCounts.Add(n, 0);
 
                     gclassToNameCounts[n]++;
-                    //if (gclassToNameCounts[n] > 1)
-                    //{
-                    //    gclassToNameCounts[n] = 0;
-                    //}
                 }
 
 
@@ -464,10 +468,42 @@ namespace TarkovDeobfuscator
             Log($"Remapper: Auto Remapped {autoRemappedClassCount} classes");
         }
 
+
+        public static Dictionary<TypeDefinition, (string InterfaceFullName, string InterfaceName)> InterfaceTypes = new();
+
+        static void TypeHelper(List<TypeDefinition> types)
+        {
+            foreach (var t in types)
+            {
+                foreach (var interfaceImplementation in t.Interfaces)
+                {
+                    string InterfaceName = interfaceImplementation.InterfaceType.Name;
+                    string InterfaceFullName = interfaceImplementation.InterfaceType.FullName;
+
+                    if (interfaceImplementation.InterfaceType.Name.Contains("`"))
+                    {
+                        var tmpname = interfaceImplementation.InterfaceType.Name.Split("`");
+                        var tmp = tmpname[0] + tmpname[1][1..];
+                        InterfaceName = tmp;
+                    }
+
+                    if (interfaceImplementation.InterfaceType.FullName.Contains("`"))
+                    {
+                        var tmpname = interfaceImplementation.InterfaceType.FullName.Split("`");
+                        var tmp = tmpname[0] + tmpname[1][1..];
+                        InterfaceFullName = tmp;
+                    }
+
+                    InterfaceTypes.TryAdd(t, (InterfaceFullName, InterfaceName));
+                }
+            }
+        }
         private static void RemapByDefinedConfiguration(AssemblyDefinition oldAssembly, RemapperConfig autoRemapperConfig)
         {
             if (!autoRemapperConfig.EnableDefinedRemapping)
                 return;
+
+            TypeHelper(oldAssembly.MainModule.GetTypes().OrderBy(x => x.Name).ToList());
 
             int countOfDefinedMappingSucceeded = 0;
             int countOfDefinedMappingFailed = 0;
@@ -480,6 +516,30 @@ namespace TarkovDeobfuscator
                     List<TypeDefinition> typeDefinitions = new();
                     var findTypes
                         = oldAssembly.MainModule.GetTypes().OrderBy(x=>x.Name).ToList();
+
+                    if (config.HasInterfaces != null && config.HasInterfaces.Length != 0)
+                    {
+                        foreach (var t in InterfaceTypes)
+                        {
+                            for (int i = 0; i < config.HasInterfaces.Length; i++)
+                            {
+                                var facename = config.HasInterfaces[i];
+                                bool HasGeneric = facename.Contains("<") && facename.Contains(">");
+                                if (HasGeneric)
+                                {
+                                    if (t.Value.InterfaceFullName.Contains(facename))
+                                        typeDefinitions.Add(t.Key);
+                                }
+                                else
+                                {
+                                    if (t.Value.InterfaceName.Contains(facename))
+                                        typeDefinitions.Add(t.Key);
+                                }
+                            }
+                        }
+                    }
+                    if (typeDefinitions.Count() > 0)
+                    { findTypes = typeDefinitions; }
 
                     // Filter Types by Must Be GClass
                     findTypes = findTypes.Where(
@@ -567,15 +627,13 @@ namespace TarkovDeobfuscator
                                     // fields
                                     (
                                     config.HasFields == null || config.HasFields.Length == 0
-                                    || (!config.HasExactFields && x.Fields.Count(y => config.HasFields.Contains(y.Name)) >= config.HasFields.Length)
-                                    || (config.HasExactFields && x.Fields.Count(y => y.IsDefinition && config.HasFields.Contains(y.Name)) == config.HasFields.Length)
+                                    || (x.Fields.Count(y => y.IsDefinition && config.HasFields.Contains(y.Name)) >= config.HasFields.Length)
                                     )
                                     ||
                                     // properties
                                     (
-                                    config.HasFields == null || config.HasFields.Length == 0
-                                    || (!config.HasExactFields && x.Properties.Count(y => config.HasFields.Contains(y.Name)) >= config.HasFields.Length)
-                                    || (config.HasExactFields && x.Properties.Count(y => y.IsDefinition && config.HasFields.Contains(y.Name)) == config.HasFields.Length)
+                                    config.HasProperties == null || config.HasProperties.Length == 0
+                                    || (x.Properties.Count(y => y.IsDefinition && config.HasProperties.Contains(y.Name)) >= config.HasProperties.Length)
 
                                     )
                                 )).ToList();
@@ -584,7 +642,7 @@ namespace TarkovDeobfuscator
                     findTypes = findTypes.Where(
                         x =>
                             (
-                                (!config.IsClass.HasValue     || (config.IsClass.HasValue     && config.IsClass.Value     && (x.IsClass && !x.IsEnum && !x.IsInterface)))
+                                (!config.IsClass.HasValue     || (config.IsClass.HasValue     && config.IsClass.Value     && x.IsClass && !x.IsEnum && !x.IsInterface))
                                 && 
                                 (!config.IsInterface.HasValue || (config.IsInterface.HasValue && config.IsInterface.Value && (x.IsInterface && !x.IsEnum && !x.IsClass)))
                             )
@@ -606,6 +664,7 @@ namespace TarkovDeobfuscator
                             )
                         ).ToList();
 
+                    /*
                     // Filter by Interfaces
                     findTypes = findTypes.Where(x
                         =>
@@ -613,6 +672,7 @@ namespace TarkovDeobfuscator
                                 || (x.Interfaces.Select(y => y.InterfaceType.Name.Split('.')[y.InterfaceType.Name.Split('.').Length - 1]).Count(y => config.HasInterfaces.Contains(y)) >= config.HasInterfaces.Length))
 
                         ).ToList();
+                    */
 
                     // Filter by Nested Types
                     findTypes = findTypes.Where(x
@@ -647,10 +707,9 @@ namespace TarkovDeobfuscator
                     {
                         foreach (var t in findTypes)
                         {
-                            
-
                             if (t.BaseType != null && t.BaseType.Name != "Object")
                             {
+                                //File.AppendAllText("BaseTypeSearch.txt", t.BaseType.Name + " | " + t.BaseType.Name + "\n");
                                 if (t.BaseType.Name.Contains(config.BaseType))
                                 {
                                     typeDefinitions.Add(t);
@@ -791,7 +850,7 @@ namespace TarkovDeobfuscator
                     {
                         foreach (var t in findTypes)
                         {
-                            if (t.Interfaces.Count == config.ExactNestedTypes.Length)
+                            if (t.NestedTypes.Count == config.ExactNestedTypes.Length)
                             {
                                 int okField = 0;
                                 for (int i = 0; i < config.ExactNestedTypes.Length; i++)

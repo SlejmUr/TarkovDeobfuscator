@@ -24,8 +24,8 @@
     },
     //"GClass1154": "BotMemoryClass",
     {
-      "RenameClassNameTo": "BotMemoryClass",
-      "HasMethods": [ "Spotted", "LoseVisionCurrentEnemy", "DeleteInfoAboutEnemy", "AddEnemy" ]
+      "RenameClassNameTo": "BotMemory",
+      "HasMethods": [ "LoseVisionCurrentEnemy", "DeleteInfoAboutEnemy" ]
     },
     //"GClass1236": "LocalizationClass",
     {
@@ -35,26 +35,28 @@
     //"GClass1595": "MainMenuController",
     {
       "RenameClassNameTo": "MainMenuController",
-      "HasFields": [ "HealthController", "InventoryController", "MatchingType", "IsInSession" ],
+      "HasProperties": [ "HealthController", "InventoryController", "MatchingType", "IsInSession" ],
       "HasMethods": [ "StopAfkMonitor", "OnProfileChangeApplied", "StoreProfile" ]
     },
     //"GClass1823": "AirdropManagerClass",
     {
       "RenameClassNameTo": "AirdropManager",
-      "IsClass": true,
-      "HasMethods": [ "ManualUpdate", "Init", "AddProjectile", "OnFlareSuccessEvent" ],
-      "HasField": [ "int_0" ]
+      "IsAbstract": false,
+      "HasMethods": [ "AddProjectile", "OnFlareSuccessEvent" ],
+      "HasFields": [ "int_0" ],
+      "HasFieldsStatic": [ "int_0" ]
     },
     //"GClass1826": "AirdropLogicClass",
     {
       "RenameClassNameTo": "AirdropLogic",
-      "HasFields": [],
-      "HasMethods": [ "Init", "InitStaticObject", "SetSyncObject", "ManualUpdate", "UpdateSyncObjectData", "TakeFromPool", "ReturnToPool" ]
+      "HasFields": [ "eairdropFallingStage_0" ],
+      "HasMethods": [ "UpdateSyncObjectData" ]
     },
     //"GClass242": "ShootPointClass",
     {
       "RenameClassNameTo": "ShootPoint",
-      "HasFields": [ "DistCoef", "Point" ]
+      "HasFields": [ "DistCoef", "Point" ],
+      "ExactFields": [ "DistCoef", "Point" ]
     },
     //"GClass25": "AICoreControllerClass",
     {
@@ -64,18 +66,18 @@
     //"GClass2552": "RagfairSettingsClass",
     {
       "RenameClassNameTo": "RagfairSettings",
-      "HasFields": [ "DefaultDuration" ]
+      "HasProperties": [ "DefaultDuration" ]
     },
     //"GClass2650": "JobPriority",
     {
       "RenameClassNameTo": "JobPriority",
-      "HasFields": [ "General", "Low", "Immediate" ],
+      "HasProperties": [ "General", "Low", "Immediate" ],
       "HasMethods": [ "Priority", "GetYieldDelegate" ]
     },
     //"GClass2671": "BindableClass",
     {
       "RenameClassNameTo": "Bindable",
-      "HasFields": [ "HasHandlers" ]
+      "HasProperties": [ "HasHandlers" ]
     },
     //"GClass2687`1": "DependencyGraph",
     {
@@ -105,14 +107,16 @@
     //"GClass577": "BotsPresets",
     {
       "RenameClassNameTo": "BotsPresets",
-      "HasFields": [ "BundlesLoading" ],
+      "HasProperties": [ "BundlesLoading" ],
       "HasMethods": [ "GetNewProfile", "CreateProfile" ]
     },
     //"GClass674": "TimerClass",
     {
       "RenameClassNameTo": "InternalUnityTimer",
       "HasFields": [ "_startTime", "float_0" ],
-      "HasMethods": [ "Start", "Stop", "SetPause" ]
+      "ExactFields": [ "_startTime", "float_0" ],
+      "HasMethods": [ "Start", "Stop", "SetPause" ],
+      "HasProperties": [ "Time", "IsStarted", "IsPaused" ]
     },
     //"GInterface120": "ISession",
     {
@@ -131,20 +135,20 @@
     {
       "RenameClassNameTo": "IEasyBundle",
       "IsInterface": true,
-      "HasFields": [ "Assets", "SameNameAsset" ]
+      "HasProperties": [ "Assets", "SameNameAsset" ]
     },
     //"GInterface30": "IBackendInterface",
     {
       "RenameClassNameTo": "IBackendInterface",
       "IsInterface": true,
-      "HasFields": [ "Session" ],
+      "HasProperties": [ "Session" ],
       "HasMethods": [ "RegisterDevice", "Login", "GetAvailableLanguages" ]
     },
     //"GInterface71": "IAIDetails",
     {
       "RenameClassNameTo": "IAIDetails",
       "IsInterface": true,
-      "HasFields": [ "AIData", "iPlayer", "IsAI", "Nickname" ]
+      "HasProperties": [ "AIData", "iPlayer", "IsAI", "Nickname" ]
     },
 
     // ------------------------------------------------------------------------------------------
@@ -152,13 +156,13 @@
     {
       "RenameClassNameTo": "IProgress",
       "IsInterface": true,
-      "HasFields": [ "Progress", "Key", "LoadState", "DependencyKeys" ],
+      "HasProperties": [ "Progress", "Key", "LoadState", "DependencyKeys" ],
       "HasMethods": [ "Load", "Unload" ]
     },
     {
       "RenameClassNameTo": "LevelProgress",
       "HasFields": [ "Progress", "Stage" ],
-      "HasMethods": []
+      "IsStruct": true
     },
     {
       "RenameClassNameTo": "ProgressManager",
@@ -166,36 +170,39 @@
       "HasMethods": [ "Report" ]
     },
     {
-      "RenameClassNameTo": "GFilterCustomization",
+      "RenameClassNameTo": "IFilterCustomization",
+      "IsInterface": true,
+      "HasMethods": [ "FilterCustomization" ]
+    },
+    {
+      "RenameClassNameTo": "FilterCustomization",
       "HasFields": [ "Default" ],
       "HasMethods": [ "FilterCustomization" ]
     },
     {
-      "RenameClassNameTo": "GStatisticsSession",
+      "RenameClassNameTo": "StatisticsSession",
       "HasFields": [],
       "HasMethods": [ "BeginStatisticsSession", "EndStatisticsSession" ],
       "IsClass": true
     },
     {
       "RenameClassNameTo": "BotCreator",
-      "HasFields": [ "BotsLoading", "BundlesLoading", "StartProfilesLoaded" ],
-      "HasMethods": [],
-      "IsClass": true
+      "HasProperties": [ "BotsLoading", "BundlesLoading", "StartProfilesLoaded" ]
     },
     {
       "RenameClassNameTo": "BossSpawner",
-      "HasFields": [ "BossSpawnWaves", "HaveSectants" ],
+      "HasProperties": [ "BossSpawnWaves", "HaveSectants" ],
       "HasMethods": [ "Run", "Stop" ]
     },
     {
       "RenameClassNameTo": "GlobalScreenController",
-      "HasFields": [ "CurrentScreenController" ],
+      "HasProperties": [ "CurrentScreenController" ],
       "HasMethods": [ "RegisterScreen", "ReleaseScreen", "TryCloseAllScreens" ]
     },
     {
       "RenameClassNameTo": "IKnifeTemplate",
       "IsInterface": true,
-      "HasFields": [ "KnifeHitDelay", "KnifeHitSlashRate", "KnifeHitStabRate", "KnifeHitRadius" ]
+      "HasProperties": [ "KnifeHitDelay", "KnifeHitSlashRate", "KnifeHitStabRate", "KnifeHitRadius" ]
     },
     {
       "RenameClassNameTo": "GlobalNetworkReadWriteDescriptors",
@@ -345,16 +352,15 @@
       "HasInterfaces": [ "IGetProfileData" ],
       "HasMethods": [ "CanSpawnByHour", "ChooseProfile" ],
       "HasProperties": [ "Side", "SpawnParams" ],
-      "HasFields": [ "nullable_0" ],
+      "HasFields": [ "profile_0" ],
       "ExactProperties": [ "Side", "SpawnParams" ]
     },
     //
     {
       "RenameClassNameTo": "BotScavProfileData",
       "HasInterfaces": [ "IGetProfileData" ],
-      "HasMethods": [ "CanSpawnByHour", "ChooseProfile", "SameSide" ],
-      "HasProperties": [ "Side", "SpawnParams" ],
-      "HasFields": [ "nullable_0", "botDifficulty_0" ],
+      "HasMethods": [ "method_0" ],
+      "HasFields": [ "float_1", "botSpawnParams_0", "nullable_0", "botDifficulty_0", "wildSpawnType_0" ],
       "ExactProperties": [ "Side", "SpawnParams" ]
     },
     //  GClass584
@@ -403,7 +409,8 @@
     {
       "RenameClassNameTo": "LocalBackendCommands",
       "HasInterfaces": [ "ITemplateCustomization", "IBackEndSession2", "IBackEndSession", "ISession", "ITrading", "IRepairController" ],
-      "HasMethods": [ "method_25" ]
+      "HasMethods": [ "method_25" ],
+      "BaseType": "LocalBackendEvent"
     },
     {
       "RenameClassNameTo": "TraderSuits",
@@ -496,11 +503,7 @@
       "RenameClassNameTo": "Suites",
       "HasFields": [ "suites", "_id" ]
     },
-    {
-      "RenameClassNameTo": "IFilterCustomization",
-      "IsInterface": true,
-      "HasMethods": [ "FilterCustomization" ]
-    },
+
 
     {
       "RenameClassNameTo": "KeyInteractionResult",
@@ -575,6 +578,642 @@
     {
       "RenameClassNameTo": "Vaulting",
       "HasInterfaces": [ "ISurfaceApproximatorModel", "ISurfaceApproximatorModelDebug" ]
+    },
+    {
+      "RenameClassNameTo": "INetworkSession",
+      "IsInterface": true,
+      "HasMethods": [ "Spawn", "Respawn", "StartGame", "StartGameAfterTeleport", "RestartGameInitiate", "RestartGame" ]
+    },
+    /*
+    {
+      "RenameClassNameTo": "WeatherClass",
+      "IsClass": true,
+      "ClassName": "Weather",
+      "HasMethods": [ "GetFineTestWeatherNodes" ]
+    },
+    {
+      "RenameClassNameTo": "AbstractComponent",
+      "IsClass": true,
+      "ClassName": "GClass1500",
+    },
+    {
+      "RenameClassNameTo": "DiscardLimit",
+      "IsClass": true,
+      "ClassName": "DiscardLimits",
+    },
+    {
+      "RenameClassNameTo": "DescriptorAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute24",
+    },
+    {
+      "RenameClassNameTo": "OrderAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute8",
+    },
+    {
+      "RenameClassNameTo": "StateMachineAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute17",
+    },
+    {
+      "RenameClassNameTo": "MaxAttribute",
+      "IsClass": true,
+      "ClassNameFull": "GAttribute1",
+    },
+    {
+      "RenameClassNameTo": "TODMinMaxAttribute",
+      "IsClass": true,
+      "ClassNameFull": "GAttribute2",
+    },
+    {
+      "RenameClassNameTo": "UnusedMethodAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute3",
+    },
+    {
+      "RenameClassNameTo": "FieldCommentAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute4",
+    },
+    {
+      "RenameClassNameTo": "UnusedINHERITEDPropertyAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute5",
+    },
+    {
+      "RenameClassNameTo": "MinMaxRoundAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute6",
+    },
+    {
+      "RenameClassNameTo": "MinAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute0",
+    },
+    {
+      "RenameClassNameTo": "DataWithLabelAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute7",
+    },
+    {
+      "RenameClassNameTo": "TypePropertyAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute10",
+    },
+    {
+      "RenameClassNameTo": "ExtensionReadWriteAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute23",
+    },
+    {
+      "RenameClassNameTo": "Min2Attribute",
+      "IsClass": true,
+      "ClassName": "GAttribute13",
+    },
+    {
+      "RenameClassNameTo": "MinMaxAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute15",
+    },
+    {
+      "RenameClassNameTo": "TypeConvertAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute18",
+    },
+    {
+      "RenameClassNameTo": "IKNameAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute19",
+    },
+    {
+      "RenameClassNameTo": "TextPropertyAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute11",
+    },
+    {
+      "RenameClassNameTo": "CutscenePropertyAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute16",
+    },
+    {
+      "RenameClassNameTo": "NameAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute20",
+    },
+    {
+      "RenameClassNameTo": "ComponentAtrribute",
+      "IsClass": true,
+      "ClassName": "GAttribute22",
+    },
+    {
+      "RenameClassNameTo": "DiffableAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute21",
+    },
+    {
+      "RenameClassNameTo": "UnityFieldAttribute",
+      "IsClass": true,
+      "ClassName": "GAttribute25",
+    },
+    {
+      "RenameClassNameTo": "StaticBitHelper",
+      "IsClass": true,
+      "ClassName": "GClass1166",
+    },
+    {
+      "RenameClassNameTo": "MyReader",
+      "IsClass": true,
+      "ClassName": "GClass1163",
+    },
+    {
+      "RenameClassNameTo": "MyWriter",
+      "IsClass": true,
+      "ClassName": "GClass1165",
+    },
+    {
+      "RenameClassNameTo": "MyBitWriter",
+      "IsClass": true,
+      "ClassName": "GClass1164",
+    },
+    {
+      "RenameClassNameTo": "MyBitReader",
+      "IsClass": true,
+      "ClassName": "GClass1162",
+    },
+    {
+      "RenameClassNameTo": "IBitSerializer",
+      "ClassNameFull": "ISerializer2",
+    },
+    {
+      "RenameClassNameTo": "IBitWriter",
+      "ClassNameFull": "GInterface78",
+    },
+    {
+      "RenameClassNameTo": "QUANTIZER",
+      "IsClass": true,
+      "ClassNameFull": "GClass1174",
+    },
+    {
+      "RenameClassNameTo": "QUANTIZER_Ser",
+      "IsClass": true,
+      "ClassNameFull": "GClass1175",
+    },
+    {
+      "RenameClassNameTo": "UsualPositionQuantizer_Ser",
+      "IsClass": true,
+      "ClassNameFull": "GClass1176",
+    },
+    {
+      "RenameClassNameTo": "RotationRW",
+      "IsClass": true,
+      "ClassNameFull": "GClass1172",
+    },
+    {
+      "RenameClassNameTo": "Point",
+      "IsClass": true,
+      "ClassNameFull": "GClass0",
+    },
+    {
+      "RenameClassNameTo": "EffectWorker",
+      "IsClass": true,
+      "ClassNameFull": "GClass2463",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectHeavyBleeding",
+      "ClassNameFull": "GInterface243",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectFracture",
+      "ClassNameFull": "GInterface245",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectLightBleeding",
+      "ClassNameFull": "GInterface242",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectContusion",
+      "ClassNameFull": "GInterface255",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectIntoxication",
+      "ClassNameFull": "GInterface249",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectLethalIntoxication",
+      "ClassNameFull": "GInterface250",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectRadExposure",
+      "ClassNameFull": "GInterface248",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectPain",
+      "ClassNameFull": "GInterface259",
+    },
+    {
+      "RenameClassNameTo": "IEffectPainkiller",
+      "ClassNameFull": "GInterface260",
+    },
+    {
+      "RenameClassNameTo": "IEffectTremor",
+      "ClassNameFull": "GInterface263",
+    },
+    {
+      "RenameClassNameTo": "IEffectExhaustion",
+      "ClassNameFull": "GInterface247",
+    },
+    {
+      "RenameClassNameTo": "IEffectTunnelVision",
+      "ClassNameFull": "GInterface265",
+    },
+    {
+      "RenameClassNameTo": "IEffectDehydration",
+      "ClassNameFull": "GInterface246",
+    },
+    {
+      "RenameClassNameTo": "IEffectWound",
+      "ClassNameFull": "GInterface264",
+    },
+    //
+    {
+      "RenameClassNameTo": "IDamageEffectBersek",
+      "ClassNameFull": "GInterface253",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectStun",
+      "ClassNameFull": "GInterface262",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectChronicStaminaFatigue",
+      "ClassNameFull": "GInterface268",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffectEncumbered",
+      "ClassNameFull": "GInterface266",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetOverEncumbered",
+      "ClassNameFull": "GInterface267",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetIImmunityPreventedNegativeEffect",
+      "ClassNameFull": "GInterface269",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetHalloweenBuff",
+      "ClassNameFull": "GInterface270",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetMisfireEffect",
+      "ClassNameFull": "GInterface271",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetStaminaZeroEffect",
+      "ClassNameFull": "GInterface272",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetPanicEffect",
+      "ClassNameFull": "GInterface273",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetMildMusclePain",
+      "ClassNameFull": "GInterface280",
+    },
+    {
+      "RenameClassNameTo": "IDamageEffetSevereMusclePain",
+      "ClassNameFull": "GInterface281",
+    },
+    //
+    {
+      "RenameClassNameTo": "ZCompresser",
+      "ClassNameFull": "GClass1260",
+    },
+    {
+      "RenameClassNameTo": "INtpResponse",
+      "ClassNameFull": "GInterface90",
+    },
+    {
+      "RenameClassNameTo": "SNTPReplyPacket",
+      "ClassNameFull": "GClass1292",
+    },
+    {
+      "RenameClassNameTo": "IPeerMessageDelivered",
+      "ClassNameFull": "GInterface89",
+    },
+    {
+      "RenameClassNameTo": "BackendFinalConfig",
+      "ClassNameFull": "GClass1312",
+    },
+    {
+      "RenameClassNameTo": "BackendFinalConfigArrayEXT",
+      "ClassNameFull": "GClass1311",
+    },
+    {
+      "RenameClassNameTo": "FinalAssetManager",
+      "ClassNameFull": "GClass1397",
+    },
+    {
+      "RenameClassNameTo": "BundleAssetHelper",
+      "ClassNameFull": "GClass1398",
+    },
+    {
+      "RenameClassNameTo": "Reader",
+      "ClassNameFull": "GClass1076",
+    },
+    {
+      "RenameClassNameTo": "FloatStruct",
+      "ClassNameFull": "GStruct101",
+    },
+    {
+      "RenameClassNameTo": "DoubleStruct",
+      "ClassNameFull": "GStruct99",
+    },
+    {
+      "RenameClassNameTo": "InteractiveObjectsStatusPacket",
+      "ClassNameFull": "GStruct120",
+    },
+    {
+      "RenameClassNameTo": "SpawnQuestLootPacket",
+      "ClassNameFull": "GStruct121",
+    },
+    {
+      "RenameClassNameTo": "UpdateExfiltrationPointPacket",
+      "ClassNameFull": "GStruct122",
+    },
+    {
+      "RenameClassNameTo": "LampChangeStatePacket",
+      "ClassNameFull": "GStruct123",
+    },
+    {
+      "RenameClassNameTo": "WindowHitPacket",
+      "ClassNameFull": "GStruct124",
+    },
+    {
+      "RenameClassNameTo": "CorpseSyncPackets",
+      "ClassNameFull": "GStruct126",
+    },
+    {
+      "RenameClassNameTo": "GrenadeSyncPackets",
+      "ClassNameFull": "GStruct127",
+    },
+    {
+      "RenameClassNameTo": "PlatformSyncPackets",
+      "ClassNameFull": "GStruct128",
+    },
+    {
+      "RenameClassNameTo": "BorderZonePackets",
+      "ClassNameFull": "GStruct129",
+    },
+    {
+      "RenameClassNameTo": "MovementCommandPacket",
+      "ClassNameFull": "Struct432",
+    },
+    {
+      "RenameClassNameTo": "LootRayInfo",
+      "ClassNameFull": "GStruct140",
+    },
+    {
+      "RenameClassNameTo": "CancelApplyingItemPacket",
+      "ClassNameFull": "GStruct139",
+    },
+    {
+      "RenameClassNameTo": "StartSearchContentPacket",
+      "ClassNameFull": "GStruct137",
+    },
+    {
+      "RenameClassNameTo": "StopSearchContentPacket",
+      "ClassNameFull": "GStruct138",
+    },
+    {
+      "RenameClassNameTo": "CutsceneEndedPacket",
+      "ClassNameFull": "GStruct141",
+    },
+    {
+      "RenameClassNameTo": "HelmetLightPacket",
+      "ClassNameFull": "GStruct181",
+    },
+    {
+      "RenameClassNameTo": "DevelopHealPacket",
+      "ClassNameFull": "GStruct142",
+    },
+    {
+      "RenameClassNameTo": "DevelopTeleportPacket",
+      "ClassNameFull": "GStruct143",
+    },
+    {
+      "RenameClassNameTo": "DevelopSetDamageCoeffPacket",
+      "ClassNameFull": "GStruct144",
+    },
+    {
+      "RenameClassNameTo": "DevelopContainerHidePacket",
+      "ClassNameFull": "GStruct147",
+    },
+    {
+      "RenameClassNameTo": "DevelopEnableServerHitDebuggingPacket",
+      "ClassNameFull": "GStruct148",
+    },
+    {
+      "RenameClassNameTo": "DevelopKillMePacket",
+      "ClassNameFull": "GStruct155",
+    },
+    {
+      "RenameClassNameTo": "DevelopKillAllAIs",
+      "ClassNameFull": "GStruct149",
+    },
+    {
+      "RenameClassNameTo": "DevelopSpawnAI",
+      "ClassNameFull": "GStruct150",
+    },
+    {
+      "RenameClassNameTo": "DevelopStartEvent",
+      "ClassNameFull": "GStruct151",
+    },
+    {
+      "RenameClassNameTo": "DevelopSnapshotAllPlayers",
+      "ClassNameFull": "GStruct153",
+    },
+    {
+      "RenameClassNameTo": "DevelopAirdrop",
+      "ClassNameFull": "GStruct154",
+    },
+    {
+      "RenameClassNameTo": "DevelopUnlockAllDoors",
+      "ClassNameFull": "GStruct152",
+    },
+    {
+      "RenameClassNameTo": "DevelopResetDiscardLimits",
+      "ClassNameFull": "GStruct156",
+    },
+    {
+      "RenameClassNameTo": "DevelopResetBufferZoneUsageTime",
+      "ClassNameFull": "GStruct158",
+    },
+    {
+      "RenameClassNameTo": "DevelopSetBufferZoneAccess",
+      "ClassNameFull": "GStruct157",
+    },
+    {
+      "RenameClassNameTo": "DevelopSetEncodedRadioTransmitter",
+      "ClassNameFull": "GStruct159",
+    },
+    {
+      "RenameClassNameTo": "DevelopSetActiveLighthouseTraderZoneDebug",
+      "ClassNameFull": "GStruct160",
+    },
+    {
+      "RenameClassNameTo": "DevelopLighthouseKeeperServicesDebug",
+      "ClassNameFull": "GStruct145",
+    },
+    {
+      "RenameClassNameTo": "DevelopBtrSupportServiceDebug",
+      "ClassNameFull": "GStruct146",
+    },
+    {
+      "RenameClassNameTo": "AcceptHitDebugDataPacket",
+      "ClassNameFull": "GStruct217",
+    },
+    {
+      "RenameClassNameTo": "AchievementConditionValueChangedPacket",
+      "ClassNameFull": "GStruct221",
+    },
+    {
+      "RenameClassNameTo": "ChangeMasteringLevelPacket",
+      "ClassNameFull": "GStruct209",
+    },
+    {
+      "RenameClassNameTo": "ClientConfirmCallbackPacket",
+      "ClassNameFull": "GStruct226",
+    },
+    {
+      "RenameClassNameTo": "DeathInventorySyncPacket",
+      "ClassNameFull": "GStruct340",
+    },
+    {
+      "RenameClassNameTo": "LighthouseTraderZoneDebugToolPacket",
+      "ClassNameFull": "GStruct214",
+    },
+    {
+      "RenameClassNameTo": "PlayerDiedPacket",
+      "ClassNameFull": "GStruct225",
+    },
+    {
+      "RenameClassNameTo": "QuestConditionValueChangedPacket",
+      "ClassNameFull": "GStruct218",
+    },
+    {
+      "RenameClassNameTo": "SetSearchedPacket",
+      "ClassNameFull": "GStruct207",
+    },
+    {
+      "RenameClassNameTo": "ShowStatNotificationPacket",
+      "ClassNameFull": "GStruct224",
+    },
+    {
+      "RenameClassNameTo": "StartSearchingActionPacket",
+      "ClassNameFull": "GStruct204",
+    },
+    {
+      "RenameClassNameTo": "StopSearchingActionPacket",
+      "ClassNameFull": "GStruct205",
+    },
+    {
+      "RenameClassNameTo": "StopSearchingPacket",
+      "ClassNameFull": "GStruct336",
+    },
+    {
+      "RenameClassNameTo": "StringNotificationPacket",
+      "ClassNameFull": "GStruct212",
+    },
+    {
+      "RenameClassNameTo": "SwitchRenderersPacket",
+      "ClassNameFull": "GStruct210",
+    },
+    {
+      "RenameClassNameTo": "SyncPositionPacket",
+      "ClassNameFull": "GStruct337",
+    },
+    {
+      "RenameClassNameTo": "TradersInfoPacket",
+      "ClassNameFull": "GStruct211",
+    },
+    {
+      "RenameClassNameTo": "UpdateAccessStatusPacket",
+      "ClassNameFull": "GStruct206",
+    },
+    {
+      "RenameClassNameTo": "WeaponOverheatPacket",
+      "ClassNameFull": "GStruct227",
+    },
+    {
+      "RenameClassNameTo": "IMyDeSerialize",
+      "ClassNameFull": "GInterface221",
+    },
+    {
+      "RenameClassNameTo": "IIKDoorInteracter",
+      "ClassNameFull": "GInterface222",
+    },
+    {
+      "RenameClassNameTo": "IPositiveEffect",
+      "ClassNameFull": "GInterface237",
+    },
+    {
+      "RenameClassNameTo": "INegativeEffect",
+      "ClassNameFull": "GInterface236",
+    },
+    {
+      "RenameClassNameTo": "IMusclePainEffect",
+      "ClassNameFull": "GInterface239",
+    },
+    {
+      "RenameClassNameTo": "IAnotherMusclePainEffect",
+      "ClassNameFull": "GInterface279",
+    },
+    {
+      "RenameClassNameTo": "IBleedingEffect",
+      "ClassNameFull": "GInterface244",
+    },*/
+    {
+      "RenameClassNameTo": "FoodDrinkItem",
+      "HasFields": [ "FoodDrinkComponent", "HealthEffectsComponent" ]
+    },
+    {
+      "RenameClassNameTo": "EquipmentItem",
+      "ClassName": "Equipment",
+      "HasFields": [ "AllSlotNames" ]
+    },
+    {
+      "RenameClassNameTo": "LauncherItem",
+      "ClassName": "Launcher",
+      "HasFields": [ "LauncherTemplate" ]
+    },
+    {
+      "RenameClassNameTo": "MagazineItem",
+      "ClassName": "Magazine",
+      "HasFields": [ "ObservedMagazineCount" ]
+    },
+    {
+      "RenameClassNameTo": "StashItemsChanged",
+      "ClassName": "Stash",
+      "HasFields": [ "change", "del" ]
+    },
+    {
+      "RenameClassNameTo": "SearchableCompoundItem",
+      "ClassName": "SearchableItem",
+      "HasFields": [ "SearchOperations" ]
+    },
+    {
+      "RenameClassNameTo": "ThermalVisionCamera",
+      "HasFields": [ "ChromaticAberrationThermalShift" ]
+    },
+    {
+      "RenameClassNameTo": "InventoryHashPacket",
+      "ClassNameFull": "Other",
+      "IsStruct": true
+    },
+    {
+      "RenameClassNameTo": "MyWeather",
+      "HasInterfaces": [ "EFT.ISerializer<Weather>" ]
     }
   ],
   "DefinedTypesToForcePublic": [
@@ -597,5 +1236,5 @@
   "ForceAllToPublic": false,
   "RenameEmptyToACS": false,
   "EnableRemapBrainAndItems": true,
-  "EnableAddSPTUsecBearToDll":  false
+  "EnableAddSPTUsecBearToDll": false
 }
