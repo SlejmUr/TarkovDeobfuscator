@@ -226,7 +226,7 @@
     },
     {
       "RenameClassNameTo": "BotSettingsRepoClass",
-      "HasMethods": [ "CountAsBossForStatistics", "GetPhraseTagFromRole", "GetScavRoleKey", "IsBoss" ]
+      "HasMethods": [ "CountAsBossForStatistics", "GetPhraseTagFromRole", "GetScavRoleKey" ]
     },
     {
       "RenameClassNameTo": "BotSettingsValuesClass",
@@ -235,7 +235,10 @@
     {
       "RenameClassNameTo": "EasyBundle",
       "HasProperties": [ "DependencyKeys", "Assets", "SameNameAsset", "Progress", "LoadState" ],
-      "HasMethods": [ "Load", "Unload" ]
+      "HasMethods": [ "Load", "Unload" ],
+      "IsClass": true,
+      "IsSealed": true,
+      "HasInterfaces": [ "IEasyBundle" ]
     },
 
     // ------------------------------------------------------------------------------------------
@@ -256,6 +259,7 @@
     {
       "RenameClassNameTo": "BackendEvent",
       "IsClass": true,
+      "IsAbstract": true,
       "HasInterfaces": [ "ITemplateCustomization", "ISession" ],
       "HasEvents": [ "OnSessionError" ]
     },
