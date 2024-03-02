@@ -17,7 +17,7 @@ namespace TarkovDeobfuscator.Deobf_Sub
                 foreach (var field in config.HasEvents)
                 {
                     var filteredType = types.Where(x => x.HasEvents && x.Events.Where(y => y.Name == field).Count() >= 1).ToList();
-                    returner = Defucker.DEFUCK(filteredType, returner);
+                    returner = Defucker.DEFUCK(filteredType, returner, field);
                 }
                 return returner;
             }

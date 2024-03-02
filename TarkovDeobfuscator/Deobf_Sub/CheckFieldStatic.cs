@@ -17,7 +17,7 @@ namespace TarkovDeobfuscator.Deobf_Sub
                 foreach (var field in config.HasFieldsStatic)
                 {
                     var filteredType = types.Where(x => x.HasFields && x.Fields.Where(y => y.Name == field && y.IsStatic).Count() >= 1).ToList();
-                    returner = Defucker.DEFUCK(filteredType, returner);
+                    returner = Defucker.DEFUCK(filteredType, returner, field);
                 }
                 return returner;
             }

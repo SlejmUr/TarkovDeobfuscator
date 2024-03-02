@@ -62,5 +62,14 @@ namespace TarkovDeobfuscator.Deobf_Sub
             }
             return types;
         }
+
+        internal static List<TypeDefinition> RemapIsEmpty(List<TypeDefinition> types, AutoRemapperInfo config)
+        {
+            if (config.IsEmpty.HasValue && config.IsEmpty.Value)
+            {
+                return types.Where(x => !x.HasProperties && !x.HasEvents && !x.HasMethods && !x.HasFields).ToList();
+            }
+            return types;
+        }
     }
 }

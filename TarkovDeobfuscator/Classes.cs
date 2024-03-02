@@ -47,6 +47,12 @@
         public bool? IsAbstract { get; set; }
         public bool? IsSealed { get; set; }
 
+        public string? BaseTypeOf { get; set; }
+        public string? AttributeOf { get; set; }
+
+        public bool? IsEmpty { get; set; }
+
+
         // SIT
         public bool? ConvertInternalMethodsToPublic { get; set; }
         public bool? OnlyRemapFirstFoundType { get; set; }

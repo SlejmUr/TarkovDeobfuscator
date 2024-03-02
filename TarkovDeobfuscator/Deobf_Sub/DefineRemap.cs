@@ -5,9 +5,9 @@ namespace TarkovDeobfuscator.Deobf_Sub
 {
     internal class DefineRemap
     {
-        static Dictionary<string, int> Dict = new();
         static void WriteToDisk(AutoRemapperInfo config, List<TypeDefinition> definitions, int Phase)
         {
+            return;
             if (config.RenameClassNameTo == null)
                 return;
 
@@ -63,15 +63,13 @@ namespace TarkovDeobfuscator.Deobf_Sub
                 if (foundThatMF == 0)
                     if (!tmp.Contains(item))
                     {
-                        File.AppendAllText("item_added.txt", item.FullName + " " + item.MetadataToken.ToInt32() + "\n");
+                        //File.AppendAllText("item_added.txt", item.FullName + " " + item.MetadataToken.ToInt32() + "\n");
                         tmp.Add(item);
                     }
-                       
-
             }
 
-
-
+            //oldAssembly.MainModule.CustomAttributes.ToList();
+           
             AllTypes = tmp;
             StaticAllTypes = AllTypes;
 
@@ -94,6 +92,28 @@ namespace TarkovDeobfuscator.Deobf_Sub
                         typeDefinitions = ret_def;
                         WriteToDisk(config, typeDefinitions, 1);
                     }
+
+                    ret_def = AttributeStuff.Remap(typeDefinitions, config);
+                    if (ret_def.Count != 0)
+                    {
+                        typeDefinitions = ret_def;
+                        WriteToDisk(config, typeDefinitions, 25);
+                    }
+
+                    ret_def = BaseTypeOf.Remap(typeDefinitions, config);
+                    if (ret_def.Count != 0)
+                    {
+                        typeDefinitions = ret_def;
+                        WriteToDisk(config, typeDefinitions, 24);
+                    }
+
+                    ret_def = CheckIs.RemapIsEmpty(typeDefinitions, config);
+                    if (ret_def.Count != 0)
+                    {
+                        typeDefinitions = ret_def;
+                        WriteToDisk(config, typeDefinitions, 23);
+                    }
+
                     ret_def = RemapInterface.Remap(config);
                     if (ret_def.Count != 0)
                     {
